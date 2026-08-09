@@ -63,11 +63,6 @@ def build() -> None:
     html = re.sub(r'<link rel="manifest"[^>]*>', "", html, count=1)
     html = re.sub(r'<script[^>]*src="/assets/[^"]+\.js"[^>]*></script>', "", html, count=1)
 
-    standalone_note = """
-    <div class="standalone-preview-note" role="note">
-      Fristående förhandsvisning · formuläret skickar ingen e-post
-    </div>
-"""
     script_block = f"""
 <script>
   window.__STANDALONE_PREVIEW__ = true;
@@ -76,40 +71,7 @@ def build() -> None:
 {js}
 </script>
 """
-    html = html.replace("</body>", standalone_note + script_block + "\n</body>", 1)
-
-    note_css = """
-.standalone-preview-note {
-  position: fixed;
-  z-index: 120;
-  right: 16px;
-  bottom: 16px;
-  max-width: 280px;
-  padding: 9px 13px;
-  border: 1px solid rgba(255,255,255,.14);
-  border-radius: 999px;
-  color: rgba(255,255,255,.75);
-  background: rgba(12,21,24,.92);
-  font: 600 11px/1.25 Inter, system-ui, sans-serif;
-  letter-spacing: .02em;
-  box-shadow: 0 8px 30px rgba(12,21,24,.18);
-  pointer-events: none;
-}
-@media (max-width: 760px) {
-  .standalone-preview-note {
-    right: 16px;
-    bottom: 86px;
-    left: 16px;
-    max-width: none;
-    text-align: center;
-    transition: opacity 180ms ease;
-  }
-  .mobile-contact-bar.is-visible ~ .standalone-preview-note {
-    opacity: .65;
-  }
-}
-"""
-    html = html.replace("</style>", note_css + "\n</style>", 1)
+    html = html.replace("</body>", script_block + "\n</body>", 1)
 
     OUTPUT.write_text(html, encoding="utf-8")
     print(f"Skapad: {OUTPUT} ({OUTPUT.stat().st_size / 1024:.0f} KB)")
