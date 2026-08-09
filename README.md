@@ -10,7 +10,7 @@ Dubbelklicka på:
 
 `OPEN_WEBSITE.html`
 
-Det är en fristående, inbäddad förhandsvisning med alla bilder och stilar i samma fil. Du kan klicka mellan sidorna direkt. Kontaktformuläret valideras men skickar ingen e-post.
+Det är en fristående, inbäddad förhandsvisning med alla bilder och stilar i samma fil. Du kan klicka mellan sidorna direkt. Kontaktformuläret finns med, men slutlig leverans bör testas i den webserver-körda versionen.
 
 ### Alternativ 2 – kör med den lokala Pythonservern
 
@@ -26,7 +26,7 @@ python3 start_preview.py
 
 Python-scriptet använder bara standardbiblioteket, startar en lokal webbserver och öppnar webbläsaren automatiskt. Avsluta med `Ctrl+C` i terminalfönstret.
 
-> Båda förhandsvisningarna är ärliga: valideringen kan testas, men ingen e-post skickas innan SMTP har konfigurerats.
+> Kontaktformuläret använder nu Web3Forms i frontend. FastAPI-backenden kan fortfarande användas separat, men krävs inte för formulärets e-postflöde.
 
 ## Teknikstack
 
@@ -63,6 +63,8 @@ npm run check
 
 ## Kör fullstack med FastAPI
 
+FastAPI-backenden är nu valfri och används inte längre för kontaktformulärets standardflöde. Den kan fortfarande köras om du vill använda egen backend eller vidareutveckla API-delen.
+
 1. Bygg frontend:
 
 ```bash
@@ -92,7 +94,7 @@ source backend/.venv/bin/activate
 pip install -r backend/requirements.txt
 ```
 
-3. Kopiera variablerna från `backend/.env.example` till din driftmiljö. FastAPI läser vanliga miljövariabler; hemligheter ska aldrig läggas i frontendkoden.
+3. Om du ska använda backendens API-funktioner i egen drift: kopiera variablerna från `backend/.env.example` till din driftmiljö. FastAPI läser vanliga miljövariabler; hemligheter ska aldrig läggas i frontendkoden.
 
 4. Starta:
 
@@ -102,21 +104,26 @@ uvicorn backend.app.main:app --reload --host 127.0.0.1 --port 8000
 
 Öppna `http://127.0.0.1:8000`.
 
-## Aktivera riktig e-post
+## Kontaktformulär via Web3Forms
 
-Följande variabler krävs:
+Kontaktformuläret skickas just nu direkt från frontend till Web3Forms.
+
+Nuvarande integration använder bland annat:
 
 ```text
-CONTACT_TO_EMAIL
-SMTP_HOST
-SMTP_PORT
-SMTP_USERNAME
-SMTP_PASSWORD
-SMTP_FROM_EMAIL
-SMTP_USE_TLS
+access_key
+subject
+from_name
+replyto
 ```
 
-Utan SMTP-inställningar svarar API:t med tydligt **förhandsvisningsläge** och påstår aldrig att ett mejl har skickats.
+Det innebär att backendens SMTP-variabler inte behövs för formuläret så länge Web3Forms används.
+
+Se formulärlogiken här:
+
+- `frontend/src/components/ContactForm.tsx`
+
+Om du senare vill gå tillbaka till egen backend-skickning via SMTP kan `backend/app/main.py` och `backend/.env.example` användas som utgångspunkt.
 
 ## Innehåll som är lätt att ändra
 
@@ -124,7 +131,8 @@ Utan SMTP-inställningar svarar API:t med tydligt **förhandsvisningsläge** och
 - Projekt: `frontend/src/data/projects.ts`
 - Sidkomponenter: `frontend/src/pages/`
 - Design och responsivitet: `frontend/src/styles/global.css`
-- Kontakt-API: `backend/app/main.py`
+- Kontaktformulär: `frontend/src/components/ContactForm.tsx`
+- Valfritt kontakt-API: `backend/app/main.py`
 
 ## Före publicering
 
@@ -132,7 +140,7 @@ Bekräfta eller byt följande:
 
 1. Telefonnumret `070-660 40 49`.
 2. Slutlig domän i `robots.txt`, `sitemap.xml` och eventuell canonical-konfiguration.
-3. SMTP-uppgifter för kontaktformuläret.
+3. Web3Forms-konfigurationen för kontaktformuläret och att mottagande e-post fungerar som tänkt.
 4. Originalfil av logotypen, helst SVG eller transparent PNG, när den finns.
 5. Fler originalbilder av färdiga projekt och ett godkänt porträtt av Oliver.
 6. Verifierade kundomdömen med uttryckligt publiceringsgodkännande.
