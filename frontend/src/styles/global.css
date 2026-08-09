@@ -2918,6 +2918,27 @@ h3 {
     min-height: 640px;
   }
 
+  .about-section__visual {
+    display: grid;
+    min-height: auto;
+  }
+
+  .about-brand-card {
+    position: relative;
+    top: auto;
+    right: auto;
+    left: auto;
+  }
+
+  .about-location-card {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    z-index: 1;
+    justify-self: end;
+    margin: -46px 18px 0 0;
+  }
+
   .about-section__content,
   .about-story__content {
     max-width: 800px;
@@ -3168,7 +3189,21 @@ h3 {
   }
 
   .project-note {
-    min-height: 330px;
+    min-height: auto;
+  }
+
+  .project-note--image {
+    min-height: 240px;
+  }
+
+  .project-note--type {
+    justify-content: flex-start;
+    padding: 30px 24px;
+  }
+
+  .project-note--type p {
+    margin-bottom: 18px;
+    font-size: clamp(1.35rem, 5.6vw, 1.9rem);
   }
 
   .about-section__visual,
@@ -3182,9 +3217,8 @@ h3 {
   }
 
   .about-location-card {
-    right: 0;
     width: 170px;
-    min-height: 180px;
+    min-height: 116px;
   }
 
   .rot-card {
@@ -3446,6 +3480,29 @@ h3 {
     width: 155px;
     min-width: 0;
     padding: 20px;
+  }
+
+  .about-location-card {
+    width: 138px;
+    min-height: 50px;
+    margin: -35px 18px 0 0;
+    padding: 16px;
+  }
+
+  .about-location-card strong {
+    font-size: 1.28rem;
+  }
+
+  .about-location-card small {
+    font-size: 0.8rem;
+  }
+
+  .project-note--image {
+    min-height: 180px;
+  }
+
+  .project-note--type {
+    padding: 26px 22px;
   }
 
   .cta-card h2 {
