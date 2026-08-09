@@ -42,7 +42,8 @@ export const services: Service[] = [
       'Tvätt, skrapning och grundarbete',
       'Kulör- och materialdialog'
     ],
-    visual: 'graphic-dark'
+    image: '/assets/service-utvandigt.webp',
+    visual: 'image'
   },
   {
     id: 'foretag-brf',
@@ -56,7 +57,8 @@ export const services: Service[] = [
       'Löpande underhåll',
       'Tydlig planering kring verksamheten'
     ],
-    visual: 'graphic-sand'
+    image: '/assets/service-foretag-brf.webp',
+    visual: 'image'
   }
 ];
 

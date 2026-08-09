@@ -2,9 +2,8 @@
 """Build a single-file, offline Penselverket preview.
 
 The production/editable frontend remains React + TypeScript. This helper packs the
-prebuilt preview, CSS and local images into OPEN_WEBSITE.html and switches the
-small preview runtime to hash routing so the file can be opened directly without
-installing dependencies or starting a server.
+prebuilt preview, CSS and local images into OPEN_WEBSITE.html so the file can be
+opened directly without installing dependencies or starting a server.
 """
 
 from __future__ import annotations
@@ -25,16 +24,23 @@ def data_uri(path: Path) -> str:
     return f"data:{mime};base64,{encoded}"
 
 
-def replace_once(text: str, old: str, new: str, label: str) -> str:
-    if old not in text:
-        raise RuntimeError(f"Kunde inte hitta sektionen: {label}")
-    return text.replace(old, new, 1)
-
-
 def build() -> None:
     html = (DIST / "index.html").read_text(encoding="utf-8")
-    css = (DIST / "assets" / "site.css").read_text(encoding="utf-8")
-    js = (DIST / "assets" / "app.js").read_text(encoding="utf-8")
+    
+    css_path = DIST / "assets" / "site.css"
+    if not css_path.exists():
+        css_files = list((DIST / "assets").glob("*.css"))
+        if css_files:
+            css_path = css_files[0]
+
+    js_path = DIST / "assets" / "app.js"
+    if not js_path.exists():
+        js_files = list((DIST / "assets").glob("*.js"))
+        if js_files:
+            js_path = js_files[0]
+
+    css = css_path.read_text(encoding="utf-8")
+    js = js_path.read_text(encoding="utf-8")
 
     for asset in (DIST / "assets").iterdir():
         if asset.suffix.lower() not in {".png", ".jpg", ".jpeg", ".webp", ".svg"}:
@@ -49,112 +55,28 @@ def build() -> None:
         html = html.replace("/favicon.svg", data_uri(favicon))
 
     html = re.sub(
-        r'<link rel="stylesheet" href="/assets/site\.css"\s*/>',
+        r'<link rel="stylesheet"[^>]*href="/assets/[^"]+\.css"[^>]*>',
         f"<style>\n{css}\n</style>",
         html,
         count=1,
     )
     html = re.sub(r'<link rel="manifest"[^>]*>', "", html, count=1)
-    html = re.sub(r'<script src="/assets/app\.js" defer></script>', "", html, count=1)
-    html = html.replace('<main id="main-content">', '<main id="main-content" tabindex="-1">', 1)
-
-    route_helper = """
-  const getStandaloneRoute = () => {
-    const raw = window.location.hash.slice(1) || '/';
-    const [route, anchor = ''] = raw.split('::');
-    return {
-      path: route.replace(/\\/$/, '') || '/',
-      anchor
-    };
-  };
-"""
-    js = replace_once(js, "  'use strict';\n", "  'use strict';\n" + route_helper, "routing helper")
-    js = replace_once(
-        js,
-        "    const path = window.location.pathname.replace(/\\/$/, '') || '/';",
-        "    const { path, anchor: routeAnchor } = getStandaloneRoute();",
-        "render route",
-    )
-    js = replace_once(
-        js,
-        """    if (window.location.hash) {
-      window.setTimeout(() => {
-        const target = document.querySelector(window.location.hash);
-        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 80);
-    } else {
-      window.scrollTo({ top: 0, behavior: 'auto' });
-    }
-""",
-        """    if (routeAnchor) {
-      window.setTimeout(() => {
-        const target = document.getElementById(routeAnchor);
-        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 80);
-    } else {
-      window.scrollTo({ top: 0, behavior: 'auto' });
-    }
-""",
-        "route anchor",
-    )
-    js = replace_once(
-        js,
-        "    const currentPath = window.location.pathname.replace(/\\/$/, '') || '/';",
-        "    const { path: currentPath } = getStandaloneRoute();",
-        "mobile route",
-    )
-
-    fetch_block = """        const response = await fetch('/api/contact', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
-"""
-    preview_response = """        const response = {
-          ok: true,
-          json: async () => ({
-            status: 'preview',
-            message: 'Formuläret och valideringen fungerar i den fristående förhandsvisningen. Ingen e-post har skickats.'
-          })
-        };
-"""
-    js = replace_once(js, fetch_block, preview_response, "contact preview")
-
-    old_click = """      const url = new URL(link.href, window.location.href);
-      if (url.origin !== window.location.origin) return;
-      event.preventDefault();
-      closeMenu();
-      history.pushState({}, '', `${url.pathname}${url.search}${url.hash}`);
-      render();
-"""
-    new_click = """      event.preventDefault();
-      closeMenu();
-      const rawHref = link.getAttribute('href') || '/';
-      const [routePath, anchor = ''] = rawHref.split('#');
-      const nextHash = `#${routePath || '/'}${anchor ? `::${anchor}` : ''}`;
-      if (window.location.hash === nextHash) render();
-      else window.location.hash = nextHash;
-"""
-    js = replace_once(js, old_click, new_click, "navigation click")
-    js = replace_once(
-        js,
-        "    window.addEventListener('popstate', render);",
-        """    window.addEventListener('hashchange', render);
-
-    const skipLink = document.querySelector('.skip-link');
-    skipLink?.addEventListener('click', (event) => {
-      event.preventDefault();
-      document.getElementById('main-content')?.focus();
-    });""",
-        "hash listener",
-    )
+    html = re.sub(r'<script[^>]*src="/assets/[^"]+\.js"[^>]*></script>', "", html, count=1)
 
     standalone_note = """
     <div class="standalone-preview-note" role="note">
       Fristående förhandsvisning · formuläret skickar ingen e-post
     </div>
 """
-    html = html.replace("</body>", standalone_note + f"\n<script>\n{js}\n</script>\n</body>", 1)
+    script_block = f"""
+<script>
+  window.__STANDALONE_PREVIEW__ = true;
+</script>
+<script>
+{js}
+</script>
+"""
+    html = html.replace("</body>", standalone_note + script_block + "\n</body>", 1)
 
     note_css = """
 .standalone-preview-note {

@@ -16,6 +16,18 @@ export default defineConfig({
   },
   build: {
     target: 'es2020',
-    sourcemap: false
+    minify: false,
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        entryFileNames: 'assets/app.js',
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name && assetInfo.name.endsWith('.css')) {
+            return 'assets/site.css';
+          }
+          return 'assets/[name][extname]';
+        }
+      }
+    }
   }
 });
