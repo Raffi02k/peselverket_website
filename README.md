@@ -57,6 +57,27 @@ npm run dev
 
 Öppna sedan adressen som Vite visar, normalt `http://localhost:5173`.
 
+## Starta med Docker Compose
+
+Om du vill starta frontend och backend tillsammans utan lokal Python- eller Node-installation kan du köra:
+
+```bash
+docker compose up --build
+```
+
+Det startar:
+
+- frontend på `http://localhost:5173`
+- backend på `http://localhost:8000`
+
+Stoppa allt med:
+
+```bash
+docker compose down
+```
+
+Docker-upplägget är främst tänkt för snabb lokal utveckling. Frontend kör Vite i dev-läge och backend kör FastAPI med reload.
+
 Produktionsbuild:
 
 ```bash
