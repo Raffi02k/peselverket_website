@@ -33,7 +33,7 @@ export function AboutPage() {
         <div className="container about-story__grid">
           <Reveal className="about-story__visual">
             <div className="about-story__logo-card">
-              <img src="/assets/penselverket-logo.png" alt="Penselverket logotyp" width="600" height="600" />
+              <img src="/assets/penselverket_logo_runt.png" alt="Penselverket logotyp" width="600" height="600" />
             </div>
             <div className="about-story__facts">
               <span>Grundare & kontaktperson</span>

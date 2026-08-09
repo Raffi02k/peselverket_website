@@ -17,6 +17,8 @@ type FormValues = {
 type FormErrors = Partial<Record<keyof FormValues, string>>;
 type SubmitState = 'idle' | 'submitting' | 'sent' | 'preview' | 'error';
 
+const WEB3FORMS_ACCESS_KEY = 'd3b5efa0-71db-4377-adae-a614eb39b371';
+
 const initialValues: FormValues = {
   name: '',
   phone: '',
@@ -38,6 +40,14 @@ function validate(values: FormValues): FormErrors {
   if (values.message.trim().length < 20) errors.message = 'Beskriv projektet med minst 20 tecken.';
   if (!values.consent) errors.consent = 'Du behöver godkänna behandlingen av personuppgifter.';
   return errors;
+}
+
+function buildSubject(values: FormValues) {
+  const parts = ['Ny offertforfragan', values.projectType, values.name];
+  if (values.location.trim()) {
+    parts.push(values.location.trim());
+  }
+  return parts.join(' | ');
 }
 
 export function ContactForm() {
@@ -68,53 +78,60 @@ export function ContactForm() {
 
     setSubmitState('submitting');
 
-    if (typeof window !== 'undefined' && window.location.protocol === 'file:') {
-      setTimeout(() => {
-        setSubmitState('preview');
-        setServerMessage(
-          'Formuläret och valideringen fungerar i den fristående förhandsvisningen. Ingen e-post har skickats.'
-        );
-      }, 400);
+    // Honeypot spam check
+    if (values.website) {
+      setSubmitState('sent');
+      setServerMessage('Tack! Din offertförfrågan har skickats.');
+      setValues(initialValues);
       return;
     }
 
     try {
-      const response = await fetch('/api/contact', {
+      const submission = {
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject: buildSubject(values),
+        from_name: 'Penselverket Webbplats',
+        replyto: values.email,
+        botcheck: values.website,
+        name: values.name,
+        email: values.email,
+        phone: values.phone,
+        location: values.location || 'Ej angivet',
+        project_type: values.projectType,
+        preferred_start: values.preferredStart || 'Ej angivet',
+        message: values.message,
+        source: 'Penselverket hemsida',
+        page: typeof window !== 'undefined' ? window.location.href : 'okand sida'
+      };
+
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(values)
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify(submission)
       });
 
       const payload = (await response.json().catch(() => ({}))) as {
-        status?: string;
+        success?: boolean;
         message?: string;
       };
 
-      if (!response.ok) {
+      if (payload.success) {
+        setSubmitState('sent');
+        setServerMessage('Tack! Din förfrågan är skickad. Penselverket kan nu kontakta dig via telefon eller e-post.');
+        setValues(initialValues);
+      } else {
         throw new Error(payload.message || 'Förfrågan kunde inte skickas just nu.');
       }
-
-      if (payload.status === 'preview') {
-        setSubmitState('preview');
-        setServerMessage(
-          payload.message ||
-            'Formuläret fungerar i förhandsvisningen, men ingen e-post har skickats eftersom e-posttjänsten inte är konfigurerad.'
-        );
-      } else {
-        setSubmitState('sent');
-        setServerMessage(payload.message || 'Tack! Din förfrågan har skickats.');
-        setValues(initialValues);
-      }
     } catch (error) {
-      if (typeof window !== 'undefined' && window.location.protocol === 'file:') {
-        setSubmitState('preview');
-        setServerMessage(
-          'Formuläret och valideringen fungerar i den fristående förhandsvisningen. Ingen e-post har skickats.'
-        );
-        return;
-      }
       setSubmitState('error');
-      setServerMessage(error instanceof Error ? error.message : 'Ett oväntat fel uppstod.');
+      setServerMessage(
+        error instanceof Error
+          ? error.message
+          : 'Ett ovantat fel uppstod. Kontrollera din internetanslutning och forsok igen.'
+      );
     }
   };
 
@@ -275,6 +292,10 @@ export function ContactForm() {
           <a href={`mailto:${company.email}`}><Mail />{company.email}</a>.
         </p>
       </div>
+
+      <p className="small-copy">
+        Formuläret skickas säkert via Web3Forms och går direkt vidare till Penselverkets e-post.
+      </p>
 
       {hasErrors && submitState === 'error' && !serverMessage && (
         <div className="form-message form-message--error" role="alert">
