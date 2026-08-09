@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit -p tsconfig.app.json && vite build",
+    "postbuild": "python3 ../scripts/build_standalone_preview.py",
     "preview": "vite preview --host 0.0.0.0",
     "check": "node ../scripts/check-build.mjs"
   },
