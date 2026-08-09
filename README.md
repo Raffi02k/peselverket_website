@@ -2,6 +2,9 @@
 
 En färdig, responsiv webbplatsprototyp för Penselverket AB med ett modernt, bilddrivet tema inspirerat av premiumwebbplatser inom bygg och hantverk. Designen är en egen tolkning och använder endast uppladdat Penselverket-material.
 
+<img width="2880" height="1551" alt="image" src="https://github.com/user-attachments/assets/adede509-6b34-43be-87d9-5794f60bfe95" />
+
+
 ## Öppna resultatet direkt
 
 ### Alternativ 1 – öppna utan installation
