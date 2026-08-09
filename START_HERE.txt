@@ -1,0 +1,17 @@
+PENSELVERKET – ÖPPNA WEBBPLATSEN
+
+SNABBAST (ingen installation):
+Dubbelklicka på OPEN_WEBSITE.html
+
+Du kan då klicka runt på hela webbplatsen direkt i webbläsaren.
+Kontaktformuläret visas i förhandsvisningsläge och skickar ingen e-post.
+
+FULL LOKAL FÖRHANDSVISNING MED PYTHON:
+Windows: dubbelklicka START_WINDOWS.bat
+Mac/Linux: dubbelklicka START_MAC_LINUX.command
+eller kör: python3 start_preview.py
+
+Pythonservern öppnar webbläsaren automatiskt. Tryck Ctrl+C i terminalen när du är klar.
+
+Redigerbar källkod finns i frontend/src (React + TypeScript).
+Python/FastAPI-backend finns i backend/.
