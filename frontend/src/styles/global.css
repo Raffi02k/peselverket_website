@@ -245,7 +245,7 @@ h3 {
 .button--small {
   min-height: 46px;
   padding-inline: 18px;
-  font-size: 0.82rem;
+  font-size: 1.02rem;
 }
 
 .button--wide {
@@ -378,7 +378,7 @@ h3 {
   position: relative;
   padding: 13px 12px;
   color: rgba(255, 255, 255, 0.69);
-  font-size: 0.82rem;
+  font-size: 1.12rem;
   font-weight: 650;
   transition: color 180ms ease;
 }

@@ -68,6 +68,16 @@ export function ContactForm() {
 
     setSubmitState('submitting');
 
+    if (typeof window !== 'undefined' && window.location.protocol === 'file:') {
+      setTimeout(() => {
+        setSubmitState('preview');
+        setServerMessage(
+          'Formuläret och valideringen fungerar i den fristående förhandsvisningen. Ingen e-post har skickats.'
+        );
+      }, 400);
+      return;
+    }
+
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -96,6 +106,13 @@ export function ContactForm() {
         setValues(initialValues);
       }
     } catch (error) {
+      if (typeof window !== 'undefined' && window.location.protocol === 'file:') {
+        setSubmitState('preview');
+        setServerMessage(
+          'Formuläret och valideringen fungerar i den fristående förhandsvisningen. Ingen e-post har skickats.'
+        );
+        return;
+      }
       setSubmitState('error');
       setServerMessage(error instanceof Error ? error.message : 'Ett oväntat fel uppstod.');
     }

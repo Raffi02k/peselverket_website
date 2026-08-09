@@ -39,6 +39,68 @@ export const projects: Project[] = [
         alt: 'Nymålad väggyta och skyddstäckt golv i en hall under pågående arbete'
       }
     ]
+  },
+  {
+    slug: 'utvandigt-fasadmaleri-uddevalla',
+    title: 'Fasad & utvändigt måleri',
+    location: 'Uddevalla',
+    category: 'Utvändigt',
+    status: 'Färdigt',
+    year: '2026',
+    summary:
+      'Noggrann fasadmålning och grundarbete på trähus i Uddevalla med fokus på väderbeständighet och välgjort detaljarbete.',
+    description: [
+      'Noggrann rengöring, tvätt och skrapning av tidigare färgskikt.',
+      'Grundmålning samt två strykningar med högkvalitativ fasadfärg för långvarigt skydd.'
+    ],
+    scope: [
+      'Ställningsbyggande och säkerhetsåtgärder',
+      'Fasadtvätt och skrapning',
+      'Grundmålning & slutstrykning',
+      'Målning av fönsterfoder och knutar'
+    ],
+    cover: '/assets/service-utvandigt.webp',
+    images: [
+      {
+        src: '/assets/service-utvandigt.webp',
+        alt: 'Målning av trähusfasad i Uddevalla'
+      },
+      {
+        src: '/assets/project-facade.webp',
+        alt: 'Detalj av nymålad fasad och fönsterfoder'
+      }
+    ]
+  },
+  {
+    slug: 'trapphus-brf-uddevalla',
+    title: 'Målning av trapphus & entréer BRF',
+    location: 'Uddevalla',
+    category: 'Företag & BRF',
+    status: 'Färdigt',
+    year: '2026',
+    summary:
+      'Uppfräschning och målning av trapphus, entréer och gemensamma ytor för bostadsrättsförening i Uddevalla.',
+    description: [
+      'Renovering och målning av väggar, lister och dörrpartier i flerbostadshus.',
+      'Slitstarka och lättstädade färgval anpassade för hög belastning i gemensamma utrymmen.'
+    ],
+    scope: [
+      'Underarbete och spackling av slitna väggar',
+      'Målning av väggar och snickerier',
+      'Slitstark finish för trapphus och entré',
+      'Tydlig planering för minsta möjliga störning för de boende'
+    ],
+    cover: '/assets/service-foretag-brf.webp',
+    images: [
+      {
+        src: '/assets/service-foretag-brf.webp',
+        alt: 'Entré och fastighet nymålad för BRF i Uddevalla'
+      },
+      {
+        src: '/assets/project-trapphus.webp',
+        alt: 'Nymålat trapphus med varma toner och belysning'
+      }
+    ]
   }
 ];
 
