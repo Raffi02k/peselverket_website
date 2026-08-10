@@ -12,6 +12,26 @@ export function ContactPage() {
         description="Kontakta Penselverket i Uddevalla för en kostnadsfri offertförfrågan om invändigt eller utvändigt måleri."
       />
 
+      <section className="contact-hero">
+        <div className="container contact-hero__grid">
+          <Reveal>
+            <p className="eyebrow eyebrow--light">Kontakt</p>
+            <h1>Har du ett projekt på gång?</h1>
+            <p>
+              Berätta kort vad du behöver hjälp med. Penselverket återkopplar med vad som behövs för att bedöma omfattning och nästa steg.
+            </p>
+          </Reveal>
+          <Reveal delay={100}>
+            <div className="contact-cards">
+              <a href={`tel:${company.phoneHref}`}><Phone /><span><small>Ring</small><strong>{company.phoneDisplay}</strong></span></a>
+              <a href={`mailto:${company.email}`}><Mail /><span><small>E-post</small><strong>{company.email}</strong></span></a>
+              <a href={company.instagramUrl} target="_blank" rel="noreferrer"><Instagram /><span><small>Instagram</small><strong>{company.instagramHandle}</strong></span></a>
+              <div><MapPin /><span><small>Arbetsområde</small><strong>Uddevalla med omnejd</strong></span></div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       <section className="contact-form-section section-pad">
         <div className="container contact-form-section__grid">
           <Reveal>
@@ -35,28 +55,6 @@ export function ContactPage() {
           </Reveal>
         </div>
       </section>
-
-      <section className="contact-hero">
-        <div className="container contact-hero__grid">
-          <Reveal>
-            <p className="eyebrow eyebrow--light">Kontakt</p>
-            <h1>Har du ett projekt på gång?</h1>
-            <p>
-              Berätta kort vad du behöver hjälp med. Penselverket återkopplar med vad som behövs för att bedöma omfattning och nästa steg.
-            </p>
-          </Reveal>
-          <Reveal delay={100}>
-            <div className="contact-cards">
-              <a href={`tel:${company.phoneHref}`}><Phone /><span><small>Ring</small><strong>{company.phoneDisplay}</strong></span></a>
-              <a href={`mailto:${company.email}`}><Mail /><span><small>E-post</small><strong>{company.email}</strong></span></a>
-              <a href={company.instagramUrl} target="_blank" rel="noreferrer"><Instagram /><span><small>Instagram</small><strong>{company.instagramHandle}</strong></span></a>
-              <div><MapPin /><span><small>Arbetsområde</small><strong>Uddevalla med omnejd</strong></span></div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
     </>
-
   );
 }
