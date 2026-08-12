@@ -44,7 +44,7 @@ export function HomePage() {
                 Resultat som håller.
               </h1>
               <p className="hero__lead">
-                Penselverket hjälper privatpersoner, företag och bostadsrättsföreningar med invändigt och utvändigt måleri – från noggrant underarbete till sista strykningen.
+                Penselverket hjälper privatpersoner, företag och bostadsrättsföreningar med invändigt och utvändigt måleri, från noggrant underarbete till sista strykningen.
               </p>
               <div className="hero__actions">
                 <Link className="button button--accent" to="/kontakt#offert">
@@ -119,7 +119,7 @@ export function HomePage() {
                 Ett bra måleriarbete handlar om mer än själva färgen. Det börjar med rätt förberedelser, tydlig kommunikation och respekt för kundens hem eller verksamhet.
               </p>
               <p>
-                Penselverket arbetar metodiskt från första genomgång till färdig yta – med ett personligt ansvar genom hela projektet.
+                Penselverket arbetar metodiskt från första genomgång till färdig yta, med ett personligt ansvar genom hela projektet.
               </p>
               <Link className="text-link" to="/om-oss">Lär känna Penselverket <ArrowUpRight /></Link>
             </div>
@@ -280,7 +280,7 @@ export function HomePage() {
               Penselverket drivs av Oliver Bingmark och bygger på ett enkelt löfte: noggrant underarbete, tydlig kommunikation och ett slutresultat som känns rätt i kundens hem eller verksamhet.
             </p>
             <p>
-              Som lokalt måleriföretag i Uddevalla är målet att göra processen enkel och trygg – från den första frågan till den avslutande genomgången.
+              Som lokalt måleriföretag i Uddevalla är målet att göra processen enkel och trygg, från den första frågan till den avslutande genomgången.
             </p>
             <Link className="button button--ghost" to="/om-oss">Mer om Penselverket <ArrowRight /></Link>
           </Reveal>
@@ -303,7 +303,7 @@ export function HomePage() {
             </p>
             <Link className="text-link" to="/kontakt#offert">Fråga om ROT i din offert <ArrowUpRight /></Link>
           </Reveal>
-          <p className="rot-card__note">Generell information – kontrollera alltid fullständiga villkor hos Skatteverket.</p>
+          <p className="rot-card__note">Generell information. Kontrollera alltid fullständiga villkor hos Skatteverket.</p>
         </div>
       </section>
 

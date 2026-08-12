@@ -65,7 +65,7 @@ export function AboutPage() {
             <SectionHeader
               eyebrow="Arbetssätt"
               title="Tre principer som håller ihop projektet."
-              text="Inte stora ord – konkreta sätt att arbeta från första kontakt till överlämning."
+              text="Inte stora ord, utan konkreta sätt att arbeta från första kontakt till överlämning."
             />
           </Reveal>
           <div className="values-grid">
