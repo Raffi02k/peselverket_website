@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { CallToAction } from '../components/CallToAction';
 import { FAQ } from '../components/FAQ';
@@ -10,6 +11,14 @@ import { company, processSteps, services } from '../content/siteContent';
 import { projects } from '../data/projects';
 
 export function HomePage() {
+  const serviceMarqueeItems = [
+    'Invändigt måleri',
+    'Utvändigt måleri',
+    'Företag & BRF',
+    'Underarbete',
+    'Uddevalla med omnejd'
+  ];
+
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'HousePainter',
@@ -96,13 +105,18 @@ export function HomePage() {
           </Reveal>
         </div>
 
-        <div className="service-marquee" aria-label="Tjänsteområden">
-          <div>
-            <span>Invändigt måleri</span><i />
-            <span>Utvändigt måleri</span><i />
-            <span>Företag & BRF</span><i />
-            <span>Underarbete</span><i />
-            <span>Uddevalla med omnejd</span>
+        <div className="service-marquee" aria-hidden="true">
+          <div className="service-marquee__track">
+            {[0, 1, 2].map((group) => (
+              <div className="service-marquee__group" key={group}>
+                {serviceMarqueeItems.map((item) => (
+                  <Fragment key={`${group}-${item}`}>
+                    <span>{item}</span>
+                    <b aria-hidden="true">✦</b>
+                  </Fragment>
+                ))}
+              </div>
+            ))}
           </div>
         </div>
       </section>
