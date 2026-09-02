@@ -45,7 +45,16 @@ export function Footer() {
 
       <div className="container site-footer__bottom">
         <p>© {year} {company.legalName}. Alla rättigheter förbehållna.</p>
-        <p>Byggd för tydlighet, förtroende och lokal synlighet.</p>
+        <a
+          className="site-footer__credit"
+          href="https://mediamagnet-three.vercel.app"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Byggd av MediaMagnet"
+        >
+          <span>Byggd av</span>
+          <img src="/assets/mediamagnet_logo_with_text_vit.png" alt="MediaMagnet" width="220" height="58" />
+        </a>
       </div>
     </footer>
   );
