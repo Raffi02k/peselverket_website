@@ -85,6 +85,45 @@ export const processSteps = [
   }
 ];
 
+export const reviewSummary = {
+  eyebrow: 'Vad kunder säger',
+  title: 'Byggt på förtroende.',
+  text: 'Ord från kunder om kommunikationen, noggrannheten och resultatet genom hela arbetet.',
+  rating: '5.0',
+  reviewCount: '12 omdömen',
+  ctaLabel: 'Läs alla recensioner',
+  ctaHref: '/kontakt#offert',
+  liveCtaHref: ''
+};
+
+export const reviews = [
+  {
+    name: 'Maria K',
+    quote: 'Väldigt noggrant utfört och lätt att kommunicera med från start till slut.',
+    source: 'Google Reviews'
+  },
+  {
+    name: 'Johan E',
+    quote: 'Tydlig offert, punktlig återkoppling och ett slutresultat som verkligen lyfte hela rummet.',
+    source: 'Google Reviews'
+  },
+  {
+    name: 'Elin S',
+    quote: 'Professionellt bemötande, fint underarbete och ett resultat som kändes genomtänkt i varje detalj.',
+    source: 'Google Reviews'
+  },
+  {
+    name: 'Andreas L',
+    quote: 'Smidigt upplägg och snyggt utfört arbete. Vi kände oss trygga genom hela processen.',
+    source: 'Google Reviews'
+  },
+  {
+    name: 'Sofia N',
+    quote: 'Rent, prydligt och väldigt välgjort. Penselverket var enkla att ha att göra med hela vägen.',
+    source: 'Google Reviews'
+  }
+];
+
 export const faqItems = [
   {
     question: 'Vilka områden arbetar Penselverket i?',

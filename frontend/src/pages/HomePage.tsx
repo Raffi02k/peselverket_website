@@ -7,7 +7,7 @@ import { PageMeta } from '../components/PageMeta';
 import { ProjectCard } from '../components/ProjectCard';
 import { Reveal } from '../components/Reveal';
 import { SectionHeader } from '../components/SectionHeader';
-import { company, processSteps, services } from '../content/siteContent';
+import { company, processSteps, reviewSummary, reviews, services } from '../content/siteContent';
 import { projects } from '../data/projects';
 
 export function HomePage() {
@@ -34,6 +34,9 @@ export function HomePage() {
       addressCountry: 'SE'
     }
   };
+  const repeatedReviews = [...reviews, ...reviews];
+  const reviewsHref = reviewSummary.liveCtaHref || reviewSummary.ctaHref;
+  const hasLiveReviewsLink = /^https?:\/\//.test(reviewsHref);
 
   return (
     <>
@@ -145,6 +148,54 @@ export function HomePage() {
           <div><strong>Moms</strong><span>Momsregistrerad</span></div>
           <div><strong>Offert</strong><span>Kostnadsfri förfrågan</span></div>
           <div><strong>559595-4453</strong><span>Organisationsnummer</span></div>
+        </div>
+      </section>
+
+      <section className="reviews-section section-pad section--paper" aria-labelledby="reviews-title">
+        <div className="container reviews-section__shell">
+          <Reveal>
+            <div className="reviews-section__heading">
+              <p className="eyebrow">{reviewSummary.eyebrow}</p>
+              <h2 id="reviews-title">{reviewSummary.title}</h2>
+              <p className="lead-copy reviews-section__lead">{reviewSummary.text}</p>
+            </div>
+          </Reveal>
+
+          <Reveal delay={60}>
+            <div className="reviews-rating" aria-label={`${reviewSummary.rating} av 5 stjärnor baserat på ${reviewSummary.reviewCount}`}>
+              <span>{reviewSummary.rating}</span>
+              <div>
+                <div className="reviews-stars" aria-hidden="true">★★★★★</div>
+                <p>{reviewSummary.reviewCount}</p>
+              </div>
+            </div>
+          </Reveal>
+
+          <div className="reviews-marquee" aria-label="Kundomdömen">
+            <div className="reviews-track">
+              {repeatedReviews.map((review, index) => (
+                <article className="review-card" key={`${review.name}-${index}`}>
+                  <p className="review-card__label">{review.source}</p>
+                  <div className="reviews-stars" aria-hidden="true">★★★★★</div>
+                  <blockquote>{`“${review.quote}”`}</blockquote>
+                  <strong>{review.name}</strong>
+                  <p className="review-card__source">Verifierad kund</p>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <Reveal delay={120}>
+            {hasLiveReviewsLink ? (
+              <a className="button button--ghost reviews-section__cta" href={reviewsHref} target="_blank" rel="noreferrer">
+                {reviewSummary.ctaLabel} <ArrowRight />
+              </a>
+            ) : (
+              <Link className="button button--ghost reviews-section__cta" to={reviewsHref}>
+                {reviewSummary.ctaLabel} <ArrowRight />
+              </Link>
+            )}
+          </Reveal>
         </div>
       </section>
 
