@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://example.com/</loc></url>
-  <url><loc>https://example.com/tjanster</loc></url>
-  <url><loc>https://example.com/projekt</loc></url>
-  <url><loc>https://example.com/om-oss</loc></url>
-  <url><loc>https://example.com/kontakt</loc></url>
-  <url><loc>https://example.com/integritet</loc></url>
+  <url><loc>https://penselverket.se/</loc></url>
+  <url><loc>https://penselverket.se/tjanster</loc></url>
+  <url><loc>https://penselverket.se/projekt</loc></url>
+  <url><loc>https://penselverket.se/projekt/invandigt-maleri-uddevalla</loc></url>
+  <url><loc>https://penselverket.se/projekt/utvandigt-fasadmaleri-uddevalla</loc></url>
+  <url><loc>https://penselverket.se/projekt/trapphus-brf-uddevalla</loc></url>
+  <url><loc>https://penselverket.se/om-oss</loc></url>
+  <url><loc>https://penselverket.se/kontakt</loc></url>
+  <url><loc>https://penselverket.se/integritet</loc></url>
 </urlset>
