@@ -5,47 +5,33 @@ En färdig, responsiv webbplatsprototyp för Penselverket AB med ett modernt, bi
 <img width="2880" height="1551" alt="image" src="https://github.com/user-attachments/assets/adede509-6b34-43be-87d9-5794f60bfe95" />
 
 
-## Öppna resultatet direkt
-
-### Alternativ 1 – öppna utan installation
-
-Dubbelklicka på:
-
-`OPEN_WEBSITE.html`
-
-Det är en fristående, inbäddad förhandsvisning med alla bilder och stilar i samma fil. Du kan klicka mellan sidorna direkt. Kontaktformuläret finns med, men slutlig leverans bör testas i den webserver-körda versionen.
-
-### Alternativ 2 – kör med den lokala Pythonservern
-
-Den färdigbyggda webbplatsen finns i `frontend/dist`.
-
-**Windows:** dubbelklicka på `START_WINDOWS.bat`.
-
-**macOS eller Linux:** dubbelklicka på `START_MAC_LINUX.command`, eller kör:
+## Kom igång lokalt
 
 ```bash
-python3 start_preview.py
+cd frontend
+npm install
+npm run dev
 ```
 
-Python-scriptet använder bara standardbiblioteket, startar en lokal webbserver och öppnar webbläsaren automatiskt. Avsluta med `Ctrl+C` i terminalfönstret.
+Webbplatsen startar på `http://localhost:5173` med Hot Module Replacement (HMR) och automatisk proxy till API-backend.
 
-> Kontaktformuläret använder nu Web3Forms i frontend. FastAPI-backenden kan fortfarande användas separat, men krävs inte för formulärets e-postflöde.
+## Produktion & Deployment (Vercel)
+
+Webbplatsen är produktionsklar och driftsätts direkt på Vercel:
+- **Frontend:** Byggs som en optimerad statisk SPA i `frontend/dist`.
+- **Backend:** Körs som en Zero-Dependency Python Serverless Function via `api/contact.py` och `api/health.py`.
+- **Formulär & Leads:** Säkert dirigerat bakom servern till **Web3Forms** (eller framtida **MediaMagnet CRM**) utan exponerade nycklar i klienten.
+
+### Miljövariabler i Vercel
+- `FORM_PROVIDER=web3forms`
+- `WEB3FORMS_ACCESS_KEY=d3b5efa0-71db-4377-adae-a614eb39b371`
 
 ## Teknikstack
 
-- **React 18** för gränssnitt och komponenter
-- **TypeScript / TSX** för frontendkoden
-- **JavaScript** för Vite-konfiguration, byggkontroll och den portabla offlineförhandsvisningen
-- **Python** för lokal previewserver och produktions-API
-- **FastAPI** som valfri produktionsbackend
-- **CSS** utan tungt UI-ramverk
-- **Vite** för utveckling och build
-
-## Två frontendlägen
-
-- `frontend/src` är den redigerbara huvudkoden i **React + TypeScript**.
-- `frontend/dist` är den medföljande lokala förhandsvisningen som kan köras direkt utan npm-installation.
-- `OPEN_WEBSITE.html` skapas av `scripts/build_standalone_preview.py` och fungerar som en enda portabel HTML-fil.
+- **React 18** & **TypeScript** för modernt komponentbaserat gränssnitt
+- **Vite** för blixtsnabb utveckling och optimerat produktionsbygge
+- **Python (Serverless)** med standardbibliotek för säker rate-limiting, honeypot och formdispatching
+- **CSS** strukturerad modulärt utan tunga externa ramverk
 
 ## Utveckla frontend
 
