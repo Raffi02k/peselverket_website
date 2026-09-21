@@ -5,7 +5,7 @@
   "cleanUrls": true,
   "rewrites": [
     {
-      "source": "/((?!api/).*)",
+      "source": "/((?!api/|assets/|favicon.svg|site.webmanifest|robots.txt|sitemap.xml|.*\\..*).*)",
       "destination": "/index.html"
     }
   ]

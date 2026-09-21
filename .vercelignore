@@ -1,11 +1,8 @@
+/backend/
+/assets/
+/scripts/
 OPEN_WEBSITE.html
-backend/
-assets/
-scripts/
 *.bat
 *.command
-START_HERE.txt
 .git
 .github
-frontend/node_modules/
-backend/.venv/
