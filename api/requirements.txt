@@ -1,0 +1,2 @@
+# Zero-dependency Vercel Serverless Function
+# Uses only Python standard library (json, urllib, smtplib, time, http.server)

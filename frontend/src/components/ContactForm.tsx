@@ -17,8 +17,6 @@ type FormValues = {
 type FormErrors = Partial<Record<keyof FormValues, string>>;
 type SubmitState = 'idle' | 'submitting' | 'sent' | 'preview' | 'error';
 
-const WEB3FORMS_ACCESS_KEY = 'd3b5efa0-71db-4377-adae-a614eb39b371';
-
 const initialValues: FormValues = {
   name: '',
   phone: '',
@@ -40,14 +38,6 @@ function validate(values: FormValues): FormErrors {
   if (values.message.trim().length < 20) errors.message = 'Beskriv projektet med minst 20 tecken.';
   if (!values.consent) errors.consent = 'Du behöver godkänna behandlingen av personuppgifter.';
   return errors;
-}
-
-function buildSubject(values: FormValues) {
-  const parts = ['Ny offertforfragan', values.projectType, values.name];
-  if (values.location.trim()) {
-    parts.push(values.location.trim());
-  }
-  return parts.join(' | ');
 }
 
 export function ContactForm() {
@@ -78,7 +68,7 @@ export function ContactForm() {
 
     setSubmitState('submitting');
 
-    // Honeypot spam check
+    // Honeypot spam check - silent client-side handling
     if (values.website) {
       setSubmitState('sent');
       setServerMessage('Tack! Din offertförfrågan har skickats.');
@@ -87,50 +77,47 @@ export function ContactForm() {
     }
 
     try {
-      const submission = {
-        access_key: WEB3FORMS_ACCESS_KEY,
-        subject: buildSubject(values),
-        from_name: 'Penselverket Webbplats',
-        replyto: values.email,
-        botcheck: values.website,
-        name: values.name,
-        email: values.email,
-        phone: values.phone,
-        location: values.location || 'Ej angivet',
-        project_type: values.projectType,
-        preferred_start: values.preferredStart || 'Ej angivet',
-        message: values.message,
-        source: 'Penselverket hemsida',
-        page: typeof window !== 'undefined' ? window.location.href : 'okand sida'
-      };
-
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json'
         },
-        body: JSON.stringify(submission)
+        body: JSON.stringify({
+          name: values.name,
+          phone: values.phone,
+          email: values.email,
+          location: values.location,
+          projectType: values.projectType,
+          preferredStart: values.preferredStart,
+          message: values.message,
+          consent: values.consent,
+          website: values.website
+        })
       });
 
-      const payload = (await response.json().catch(() => ({}))) as {
-        success?: boolean;
+      const data = (await response.json().catch(() => ({}))) as {
+        status?: string;
         message?: string;
+        detail?: string;
       };
 
-      if (payload.success) {
-        setSubmitState('sent');
-        setServerMessage('Tack! Din förfrågan är skickad. Penselverket kan nu kontakta dig via telefon eller e-post.');
+      if (response.ok || response.status === 202) {
+        setSubmitState(data.status === 'preview' ? 'preview' : 'sent');
+        setServerMessage(
+          data.message ||
+            'Tack! Din förfrågan är skickad. Penselverket kan nu kontakta dig via telefon eller e-post.'
+        );
         setValues(initialValues);
       } else {
-        throw new Error(payload.message || 'Förfrågan kunde inte skickas just nu.');
+        throw new Error(data.detail || data.message || 'Förfrågan kunde inte skickas just nu.');
       }
     } catch (error) {
       setSubmitState('error');
       setServerMessage(
         error instanceof Error
           ? error.message
-          : 'Ett ovantat fel uppstod. Kontrollera din internetanslutning och forsok igen.'
+          : 'Ett oväntat fel uppstod. Kontrollera din internetanslutning och försök igen.'
       );
     }
   };
@@ -294,7 +281,7 @@ export function ContactForm() {
       </div>
 
       <p className="small-copy">
-        Formuläret skickas säkert via Web3Forms och går direkt vidare till Penselverkets e-post.
+        Dina uppgifter skickas krypterat och hanteras säkert direkt av Penselverket.
       </p>
 
       {hasErrors && submitState === 'error' && !serverMessage && (
