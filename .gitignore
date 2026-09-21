@@ -10,3 +10,4 @@ backend/.venv/
 .DS_Store
 **/.DS_Store
 *.log
+OPEN_WEBSITE.html

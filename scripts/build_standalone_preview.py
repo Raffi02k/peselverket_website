@@ -25,6 +25,10 @@ def data_uri(path: Path) -> str:
 
 
 def build() -> None:
+    if os.environ.get("VERCEL") or os.environ.get("CI"):
+        print("Vercel/CI detected: hoppar över skapandet av offline OPEN_WEBSITE.html.")
+        return
+
     html = (DIST / "index.html").read_text(encoding="utf-8")
     
     css_path = DIST / "assets" / "site.css"
