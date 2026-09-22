@@ -53,7 +53,7 @@ export function Footer() {
           aria-label="Byggd av MediaMagnet"
         >
           <span>Byggd av</span>
-          <img src="/assets/mediamagnet_logo_with_text_vit.png" alt="MediaMagnet" width="220" height="58" />
+          <img src="/assets/mediamagnet_logo_with_text_vit.webp" alt="MediaMagnet" width="220" height="58" />
         </a>
       </div>
     </footer>

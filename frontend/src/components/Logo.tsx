@@ -22,7 +22,7 @@ export function Logo({ compact = false, light = false }: LogoProps) {
       aria-label="Penselverket – startsida"
       onClick={handleClick}
     >
-      <img src="/assets/penselverket_logo_runt.png" alt="" width="52" height="52" />
+      <img src="/assets/penselverket_logo_runt.webp" alt="" width="52" height="52" />
       {!compact && (
         <span className="brand__text">
           <strong>Penselverket</strong>

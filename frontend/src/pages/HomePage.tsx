@@ -327,7 +327,7 @@ export function HomePage() {
         <div className="container about-section__grid">
           <Reveal className="about-section__visual">
             <div className="about-brand-card">
-              <img src="/assets/penselverket_logo_runt.png" alt="Penselverket logotyp" width="600" height="600" loading="lazy" />
+              <img src="/assets/penselverket_logo_runt.webp" alt="Penselverket logotyp" width="600" height="600" loading="lazy" />
               <div className="about-brand-card__caption">
                 <span>Grundare & kontaktperson</span>
                 <strong>Oliver Bingmark</strong>
