@@ -78,7 +78,7 @@ export function HomePage() {
             <div className="hero-media">
               <img
                 className="hero-media__main"
-                src="/assets/Gulmålning1.png"
+                src="/assets/gulmalning2.webp"
                 alt="Pågående invändigt måleriprojekt med skyddstäckta ytor i Uddevalla"
                 width="1206"
                 height="640"
@@ -90,7 +90,7 @@ export function HomePage() {
                 <strong>Invändigt måleri · Uddevalla</strong>
               </div>
               <div className="hero-media__mini">
-                <img src="/assets/Fönster.png" alt="Detalj från pågående invändigt arbete" width="596" height="900" />
+                <img src="/assets/fonster.webp" alt="Detalj från pågående invändigt arbete" width="596" height="900" />
                 <span>Omsorg i varje detalj</span>
               </div>
               <div className="brand-seal" aria-hidden="true">
