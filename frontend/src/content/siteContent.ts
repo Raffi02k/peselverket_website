@@ -47,7 +47,7 @@ export const services: Service[] = [
   },
   {
     id: 'foretag-brf',
-    title: 'Företag & bostadsrättsföreningar',
+    title: 'Företag & bostads\u00ADrätts\u00ADföreningar',
     shortTitle: 'Företag & BRF',
     description:
       'Planerade måleriinsatser för kontor, fastigheter, gemensamma ytor och verksamhetsmiljöer.',

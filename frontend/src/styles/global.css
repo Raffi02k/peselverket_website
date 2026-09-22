@@ -27,11 +27,14 @@
 html {
   scroll-behavior: smooth;
   background: var(--paper);
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
   min-width: 320px;
+  max-width: 100%;
+  overflow-x: hidden;
   color: var(--ink);
   background: var(--paper);
   font-family: var(--font-sans);
@@ -39,6 +42,16 @@ body {
   line-height: 1.62;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 body.menu-open {
@@ -2020,6 +2033,11 @@ h3 {
   order: 2;
 }
 
+.service-detail__visual,
+.service-detail__content {
+  min-width: 0;
+}
+
 .service-detail__visual {
   min-height: 590px;
   overflow: hidden;
@@ -3188,7 +3206,7 @@ h3 {
   }
 
   .service-detail {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 50px;
   }
 
@@ -3600,22 +3618,29 @@ h3 {
   }
 
   .page-hero h1 {
-    font-size: clamp(3rem, 14vw, 5rem);
+    font-size: clamp(2.4rem, 11vw, 4.2rem);
   }
 
   .service-detail {
     min-height: auto;
-    padding: 70px 0;
+    padding: 60px 0;
+    gap: 36px;
   }
 
   .service-detail__visual,
   .service-detail__visual img,
   .service-detail__graphic {
-    min-height: 440px;
+    min-height: clamp(280px, 68vw, 380px);
   }
 
   .service-detail__graphic {
     padding: 30px;
+  }
+
+  .service-detail__content h2 {
+    font-size: clamp(1.85rem, 7.5vw, 2.5rem);
+    hyphens: auto;
+    -webkit-hyphens: auto;
   }
 
   .scope-list>div {
@@ -3776,6 +3801,14 @@ h3 {
 
   .project-note--type {
     padding: 26px 22px;
+  }
+
+  .page-hero h1 {
+    font-size: clamp(2.1rem, 10vw, 2.7rem);
+  }
+
+  .service-detail__content h2 {
+    font-size: clamp(1.6rem, 6.8vw, 2.05rem);
   }
 
   .cta-card h2 {
