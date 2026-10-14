@@ -7,6 +7,7 @@ import { Logo } from './Logo';
 const leftLinks = [
   { to: '/tjanster', label: 'Tjänster' },
   { to: '/projekt', label: 'Projekt' },
+  { to: '/galleri', label: 'Galleri' },
   { to: '/om-oss', label: 'Om oss' }
 ];
 
@@ -73,13 +74,29 @@ export function Header() {
   const navClass = ({ isActive }: { isActive: boolean }) =>
     `nav-link ${isActive ? 'is-active' : ''}`;
 
+  const handleNavClick = (to: string) => (event: React.MouseEvent<HTMLAnchorElement>) => {
+    if (location.pathname === to) {
+      event.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    setOpen(false);
+  };
+
+  const isHome = location.pathname === '/';
+  const isTransparent = isHome && !scrolled;
+
   return (
     <>
-      <header className={`site-header ${scrolled ? 'is-scrolled' : ''}`}>
+      <header className={`site-header ${scrolled ? 'is-scrolled' : ''} ${isTransparent ? 'is-transparent' : ''}`}>
         <nav className="nav-shell" aria-label="Huvudnavigation">
           <div className="nav-shell__left">
             {leftLinks.map((link) => (
-              <NavLink key={link.to} className={navClass} to={link.to}>
+              <NavLink
+                key={link.to}
+                className={navClass}
+                to={link.to}
+                onClick={handleNavClick(link.to)}
+              >
                 {link.label}
               </NavLink>
             ))}
@@ -93,7 +110,11 @@ export function Header() {
             <a className="nav-link" href={company.instagramUrl} target="_blank" rel="noreferrer">
               Instagram
             </a>
-            <NavLink className={navClass} to="/kontakt">
+            <NavLink
+              className={navClass}
+              to="/kontakt"
+              onClick={handleNavClick('/kontakt')}
+            >
               Kontakt
             </NavLink>
             <NavLink className="button button--accent button--small" to="/kontakt#offert">
@@ -129,7 +150,12 @@ export function Header() {
           <p className="eyebrow eyebrow--light">Navigera</p>
           <div className="mobile-menu__links">
             {[...leftLinks, { to: '/kontakt', label: 'Kontakt' }].map((link, index) => (
-              <NavLink key={link.to} to={link.to} tabIndex={open ? 0 : -1}>
+              <NavLink
+                key={link.to}
+                to={link.to}
+                tabIndex={open ? 0 : -1}
+                onClick={handleNavClick(link.to)}
+              >
                 <span>0{index + 1}</span>
                 {link.label}
                 <ArrowUpRight />

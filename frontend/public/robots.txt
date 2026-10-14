@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://penselverket.se/sitemap.xml
+Sitemap: https://www.penselverket.com/sitemap.xml

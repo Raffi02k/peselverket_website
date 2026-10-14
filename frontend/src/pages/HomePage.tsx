@@ -12,11 +12,11 @@ import { projects } from '../data/projects';
 
 export function HomePage() {
   const serviceMarqueeItems = [
-    'Invändigt måleri',
     'Utvändigt måleri',
     'Företag & BRF',
     'Underarbete',
-    'Uddevalla med omnejd'
+    'Uddevalla med omnejd',
+    'Invändigt måleri'
   ];
 
   const structuredData = {
@@ -35,8 +35,6 @@ export function HomePage() {
     }
   };
   const repeatedReviews = [...reviews, ...reviews];
-  const reviewsHref = reviewSummary.liveCtaHref || reviewSummary.ctaHref;
-  const hasLiveReviewsLink = /^https?:\/\//.test(reviewsHref);
 
   return (
     <>
@@ -46,80 +44,89 @@ export function HomePage() {
       />
       <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
 
-      <section className="hero">
-        <div className="container hero__grid">
-          <div className="hero__content">
-            <Reveal>
-              <p className="eyebrow">Målare i Uddevalla & Västra Götaland</p>
-              <h1>
-                Måleri med <span>precision.</span><br />
-                Resultat som håller.
-              </h1>
-              <p className="hero__lead">
-                Penselverket hjälper privatpersoner, företag och bostadsrättsföreningar med invändigt och utvändigt måleri, från noggrant underarbete till sista strykningen.
-              </p>
-              <div className="hero__actions">
-                <Link className="button button--accent" to="/kontakt#offert">
-                  Begär kostnadsfri offert <ArrowUpRight />
-                </Link>
-                <Link className="button button--ghost" to="/projekt">
-                  Se våra projekt <ArrowRight />
-                </Link>
-              </div>
-              <div className="hero__trust" aria-label="Fördelar">
-                <span><Check /> Lokalt i Uddevalla</span>
-                <span><Check /> Tydlig offert</span>
-                <span><Check /> Noggrant underarbete</span>
-              </div>
-            </Reveal>
-          </div>
-
-          <Reveal className="hero__visual" delay={120}>
-            <div className="hero-media">
-              <img
-                className="hero-media__main"
-                src="/assets/gulmalning2.webp"
-                alt="Pågående invändigt måleriprojekt med skyddstäckta ytor i Uddevalla"
-                width="1206"
-                height="640"
-                fetchPriority="high"
-              />
-              <div className="hero-media__shade" />
-              <div className="hero-media__caption">
-                <span>Aktuellt arbete</span>
-                <strong>Invändigt måleri · Uddevalla</strong>
-              </div>
-              <div className="hero-media__mini">
-                <img src="/assets/fonster.webp" alt="Detalj från pågående invändigt arbete" width="596" height="900" />
-                <span>Omsorg i varje detalj</span>
-              </div>
-              <div className="brand-seal" aria-hidden="true">
-                <svg viewBox="0 0 160 160">
-                  <defs>
-                    <path id="sealPath" d="M80,80 m-58,0 a58,58 0 1,1 116,0 a58,58 0 1,1 -116,0" />
-                  </defs>
-                  <text>
-                    <textPath href="#sealPath">KVALITET I VARJE PENSELDRAG · UDDEVALLA · </textPath>
-                  </text>
-                </svg>
-                <span>P</span>
-              </div>
-            </div>
-          </Reveal>
+      <section className="hero-video">
+        <div className="hero-video__bg" aria-hidden="true">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster="/media/hero-poster.webp"
+            src="/media/hero-video.mp4"
+          />
         </div>
+        <div className="hero-video__overlay" aria-hidden="true" />
+        <div className="hero-video__content">
+          <img
+            src="/assets/penselverket_logo_runt.webp"
+            alt="Penselverket"
+            className="hero-video__logo"
+            width="420"
+            height="420"
+          />
 
-        <div className="service-marquee" aria-hidden="true">
-          <div className="service-marquee__track">
-            {[0, 1, 2].map((group) => (
-              <div className="service-marquee__group" key={group}>
-                {serviceMarqueeItems.map((item) => (
-                  <Fragment key={`${group}-${item}`}>
-                    <span>{item}</span>
-                    <b aria-hidden="true">✦</b>
-                  </Fragment>
-                ))}
-              </div>
+          <h1 className="hero-video__subtitle">
+            Professionellt måleri med precision och resultat som håller i Uddevalla &amp; Västra Götaland
+          </h1>
+
+          <div className="hero-video__ctas">
+            <Link to="/kontakt#offert" className="hero-video__cta hero-video__cta--primary">
+              Begär offert
+            </Link>
+            <Link to="/tjanster" className="hero-video__cta">
+              Se våra tjänster
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <div className="service-marquee" aria-hidden="true">
+        <div className="service-marquee__track">
+          {[0, 1, 2].map((group) => (
+            <div className="service-marquee__group" key={group}>
+              {serviceMarqueeItems.map((item) => (
+                <Fragment key={`${group}-${item}`}>
+                  <span>{item}</span>
+                  <b aria-hidden="true">✦</b>
+                </Fragment>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <section className="services-section section-pad section--sand">
+        <div className="container">
+          <Reveal>
+            <SectionHeader
+              eyebrow="Tjänster"
+              title={<>Måleritjänster för hem,<br />fastigheter och verksamheter.</>}
+              text="Varje uppdrag börjar med att förstå ytan, miljön och det resultat du vill uppnå."
+            />
+          </Reveal>
+
+          <div className="services-grid">
+            {services.map((service, index) => (
+              <Reveal key={service.id} delay={index * 90}>
+                <Link className={`service-card service-card--${service.visual}`} to={`/tjanster#${service.id}`}>
+                  {service.image && <img src={service.image} alt="" loading="lazy" />}
+                  <div className="service-card__graphic" aria-hidden="true">
+                    <span>{String(index + 1).padStart(2, '0')}</span>
+                    <i />
+                  </div>
+                  <div className="service-card__overlay" />
+                  <div className="service-card__content">
+                    <span className="service-card__number">0{index + 1}</span>
+                    <h3>{service.title}</h3>
+                    <p>{service.description}</p>
+                    <span className="service-card__link">Läs mer <ArrowUpRight /></span>
+                  </div>
+                </Link>
+              </Reveal>
             ))}
+          </div>
+          <div className="section-link-row">
+            <Link className="button button--ghost" to="/tjanster">Se alla tjänster <ArrowRight /></Link>
           </div>
         </div>
       </section>
@@ -186,52 +193,25 @@ export function HomePage() {
           </div>
 
           <Reveal delay={120}>
-            {hasLiveReviewsLink ? (
-              <a className="button button--ghost reviews-section__cta" href={reviewsHref} target="_blank" rel="noreferrer">
+            <div className="reviews-section__actions">
+              <a
+                className="button button--accent reviews-section__cta"
+                href={reviewSummary.writeReviewHref}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {reviewSummary.writeReviewLabel} <ArrowUpRight />
+              </a>
+              <a
+                className="button button--ghost reviews-section__cta"
+                href={reviewSummary.ctaHref}
+                target="_blank"
+                rel="noreferrer"
+              >
                 {reviewSummary.ctaLabel} <ArrowRight />
               </a>
-            ) : (
-              <Link className="button button--ghost reviews-section__cta" to={reviewsHref}>
-                {reviewSummary.ctaLabel} <ArrowRight />
-              </Link>
-            )}
+            </div>
           </Reveal>
-        </div>
-      </section>
-
-      <section className="services-section section-pad section--sand">
-        <div className="container">
-          <Reveal>
-            <SectionHeader
-              eyebrow="Tjänster"
-              title={<>Måleritjänster för hem,<br />fastigheter och verksamheter.</>}
-              text="Varje uppdrag börjar med att förstå ytan, miljön och det resultat du vill uppnå."
-            />
-          </Reveal>
-
-          <div className="services-grid">
-            {services.map((service, index) => (
-              <Reveal key={service.id} delay={index * 90}>
-                <Link className={`service-card service-card--${service.visual}`} to={`/tjanster#${service.id}`}>
-                  {service.image && <img src={service.image} alt="" loading="lazy" />}
-                  <div className="service-card__graphic" aria-hidden="true">
-                    <span>{String(index + 1).padStart(2, '0')}</span>
-                    <i />
-                  </div>
-                  <div className="service-card__overlay" />
-                  <div className="service-card__content">
-                    <span className="service-card__number">0{index + 1}</span>
-                    <h3>{service.title}</h3>
-                    <p>{service.description}</p>
-                    <span className="service-card__link">Läs mer <ArrowUpRight /></span>
-                  </div>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-          <div className="section-link-row">
-            <Link className="button button--ghost" to="/tjanster">Se alla tjänster <ArrowRight /></Link>
-          </div>
         </div>
       </section>
 
@@ -262,17 +242,15 @@ export function HomePage() {
       <section className="process-section section-pad">
         <div className="container process-section__grid">
           <div className="process-section__sticky">
-            <Reveal>
-              <SectionHeader
-                eyebrow="Så går det till"
-                title={<>Från första kontakt till sista penseldrag.</>}
-                text="En tydlig process gör det enklare att veta vad som händer före, under och efter arbetet."
-                light
-              />
-              <Link className="button button--ghost-light" to="/kontakt#offert">
-                Starta en förfrågan <ArrowUpRight />
-              </Link>
-            </Reveal>
+            <SectionHeader
+              eyebrow="Så går det till"
+              title={<>Från första kontakt till sista penseldrag.</>}
+              text="En tydlig process gör det enklare att veta vad som händer före, under och efter arbetet."
+              light
+            />
+            <Link className="button button--ghost-light" to="/kontakt#offert">
+              Starta en förfrågan <ArrowUpRight />
+            </Link>
           </div>
           <div className="process-list">
             {processSteps.map((step, index) => (

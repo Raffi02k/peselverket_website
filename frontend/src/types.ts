@@ -24,3 +24,37 @@ export type Project = {
   cover: string;
   images: Array<{ src: string; alt: string }>;
 };
+
+export type LocationServiceItem = {
+  number: string;
+  title: string;
+  description: string;
+  highlight: string;
+};
+
+export type LocationData = {
+  slug: string;
+  name: string;
+  county: string;
+  heroTagline: string;
+  heading: string;
+  headingAccent: string;
+  metaTitle: string;
+  metaDescription: string;
+  heroDescription: string;
+  quickAnswer: string;
+  subAreas: string[];
+  pricingNote: string;
+  servicesSubtitle: string;
+  services: LocationServiceItem[];
+  processLead: string;
+  processSteps: Array<{
+    number: string;
+    title: string;
+    text: string;
+  }>;
+  faqs: Array<{
+    question: string;
+    answer: string;
+  }>;
+};

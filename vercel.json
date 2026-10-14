@@ -2,6 +2,18 @@
   "framework": null,
   "buildCommand": "cd frontend && npm install && npm run build",
   "outputDirectory": "frontend/dist",
+  "redirects": [
+    {
+      "source": "/omdome",
+      "destination": "https://g.page/r/CWqBg4WCrbzlECE/review",
+      "permanent": true
+    },
+    {
+      "source": "/recension",
+      "destination": "https://g.page/r/CWqBg4WCrbzlECE/review",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/api/(.*)",

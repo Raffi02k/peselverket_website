@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://penselverket.se/</loc></url>
-  <url><loc>https://penselverket.se/tjanster</loc></url>
-  <url><loc>https://penselverket.se/projekt</loc></url>
-  <url><loc>https://penselverket.se/projekt/invandigt-maleri-uddevalla</loc></url>
-  <url><loc>https://penselverket.se/projekt/utvandigt-fasadmaleri-uddevalla</loc></url>
-  <url><loc>https://penselverket.se/projekt/trapphus-brf-uddevalla</loc></url>
-  <url><loc>https://penselverket.se/om-oss</loc></url>
-  <url><loc>https://penselverket.se/kontakt</loc></url>
-  <url><loc>https://penselverket.se/integritet</loc></url>
+  <url><loc>https://www.penselverket.com/</loc></url>
+  <url><loc>https://www.penselverket.com/tjanster</loc></url>
+  <url><loc>https://www.penselverket.com/projekt</loc></url>
+  <url><loc>https://www.penselverket.com/galleri</loc></url>
+  <url><loc>https://www.penselverket.com/projekt/invandigt-maleri-uddevalla</loc></url>
+  <url><loc>https://www.penselverket.com/projekt/utvandigt-fasadmaleri-uddevalla</loc></url>
+  <url><loc>https://www.penselverket.com/projekt/trapphus-brf-uddevalla</loc></url>
+  <url><loc>https://www.penselverket.com/om-oss</loc></url>
+  <url><loc>https://www.penselverket.com/kontakt</loc></url>
+  <url><loc>https://www.penselverket.com/faq</loc></url>
+  <url><loc>https://www.penselverket.com/integritet</loc></url>
+  <url><loc>https://www.penselverket.com/tillganglighet</loc></url>
+  <!-- SEO Orter -->
+  <url><loc>https://www.penselverket.com/malare/uddevalla</loc></url>
+  <url><loc>https://www.penselverket.com/malare/trollhattan</loc></url>
+  <url><loc>https://www.penselverket.com/malare/vanersborg</loc></url>
+  <url><loc>https://www.penselverket.com/malare/ljungskile</loc></url>
+  <url><loc>https://www.penselverket.com/malare/lysekil</loc></url>
+  <url><loc>https://www.penselverket.com/malare/stenungsund</loc></url>
+  <url><loc>https://www.penselverket.com/malare/orust</loc></url>
+  <url><loc>https://www.penselverket.com/malare/goteborg</loc></url>
 </urlset>

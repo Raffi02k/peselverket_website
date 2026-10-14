@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router-dom';
+import { CookieModal } from './CookieModal';
 import { Footer } from './Footer';
 import { Header } from './Header';
 import { MobileContactBar } from './MobileContactBar';
@@ -15,6 +16,7 @@ export function Layout() {
       </main>
       <Footer />
       <MobileContactBar />
+      <CookieModal />
     </>
   );
 }

@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
+import { openCookieModal } from './CookieModal';
 import { company } from '../content/siteContent';
+import { locations } from '../data/locations';
 import { ArrowUpRight, Instagram, Mail, MapPin, Phone } from './Icons';
 import { Logo } from './Logo';
 
@@ -20,9 +22,10 @@ export function Footer() {
           <p className="footer-label">Utforska</p>
           <Link to="/tjanster">Tjänster</Link>
           <Link to="/projekt">Projekt</Link>
+          <Link to="/galleri">Galleri</Link>
           <Link to="/om-oss">Om oss</Link>
+          <Link to="/faq">Vanliga frågor (FAQ)</Link>
           <Link to="/kontakt">Kontakt</Link>
-          <Link to="/integritet">Integritet</Link>
         </div>
 
         <div className="site-footer__column">
@@ -43,8 +46,44 @@ export function Footer() {
         </div>
       </div>
 
+      <div className="container site-footer__locations-wrapper">
+        <div className="site-footer__locations">
+          <span className="footer-locations__badge">ORTER</span>
+          <div className="footer-locations__list" aria-label="Orter vi arbetar i">
+            {locations.map((loc) => (
+              <Link
+                key={loc.slug}
+                to={`/malare/${loc.slug}`}
+                className="footer-location-pill"
+                title={`Målare i ${loc.name}`}
+              >
+                Målare i {loc.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+
       <div className="container site-footer__bottom">
-        <p>© {year} {company.legalName}. Alla rättigheter förbehållna.</p>
+        <div className="site-footer__bottom-left">
+          <p>© {year} {company.legalName}. Alla rättigheter förbehållna.</p>
+          <div className="site-footer__legal-links">
+            <Link to="/integritet">Integritet & GDPR</Link>
+            <span className="legal-sep">·</span>
+            <Link to="/tillganglighet">Tillgänglighet</Link>
+            <span className="legal-sep">·</span>
+            <button
+              type="button"
+              className="footer-cookie-btn"
+              onClick={openCookieModal}
+            >
+              Cookie-inställningar
+            </button>
+            <span className="legal-sep">·</span>
+            <Link to="/faq">FAQ</Link>
+          </div>
+        </div>
+
         <a
           className="site-footer__credit"
           href="https://mediamagnet-three.vercel.app"

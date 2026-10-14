@@ -11,7 +11,8 @@ export const company = {
   instagramUrl: 'https://www.instagram.com/penselverket/',
   organisationNumber: '559595-4453',
   location: 'Uddevalla, Västra Götaland',
-  serviceArea: 'Uddevalla med omnejd och övriga Västra Götaland efter överenskommelse.'
+  serviceArea: 'Uddevalla med omnejd och övriga Västra Götaland efter överenskommelse.',
+  googleReviewUrl: 'https://g.page/r/CWqBg4WCrbzlECE/review'
 };
 
 export const services: Service[] = [
@@ -92,8 +93,9 @@ export const reviewSummary = {
   rating: '5.0',
   reviewCount: '12 omdömen',
   ctaLabel: 'Läs alla recensioner',
-  ctaHref: '/kontakt#offert',
-  liveCtaHref: ''
+  ctaHref: 'https://g.page/r/CWqBg4WCrbzlECE',
+  writeReviewLabel: 'Lämna ett omdöme på Google',
+  writeReviewHref: 'https://g.page/r/CWqBg4WCrbzlECE/review'
 };
 
 export const reviews = [

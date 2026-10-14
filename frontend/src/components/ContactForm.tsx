@@ -1,4 +1,4 @@
-import { FormEvent, useMemo, useState } from 'react';
+import { FormEvent, useEffect, useMemo, useState } from 'react';
 import { company } from '../content/siteContent';
 import { ArrowRight, Check, Mail, Phone } from './Icons';
 
@@ -40,11 +40,26 @@ function validate(values: FormValues): FormErrors {
   return errors;
 }
 
-export function ContactForm() {
-  const [values, setValues] = useState<FormValues>(initialValues);
+type ContactFormProps = {
+  defaultLocation?: string;
+  defaultProjectType?: string;
+};
+
+export function ContactForm({ defaultLocation = '', defaultProjectType = '' }: ContactFormProps = {}) {
+  const [values, setValues] = useState<FormValues>(() => ({
+    ...initialValues,
+    location: defaultLocation,
+    projectType: defaultProjectType
+  }));
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitState, setSubmitState] = useState<SubmitState>('idle');
   const [serverMessage, setServerMessage] = useState('');
+
+  useEffect(() => {
+    if (defaultLocation) {
+      setValues((prev) => ({ ...prev, location: defaultLocation }));
+    }
+  }, [defaultLocation]);
 
   const hasErrors = useMemo(() => Object.keys(errors).length > 0, [errors]);
 
