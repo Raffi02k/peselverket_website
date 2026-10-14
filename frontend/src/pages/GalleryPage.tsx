@@ -4,7 +4,6 @@ import { CallToAction } from '../components/CallToAction';
 import { ArrowLeft, ArrowRight, ArrowUpRight, Check, CloseIcon, MapPin, ZoomIn } from '../components/Icons';
 import { PageMeta } from '../components/PageMeta';
 import { Reveal } from '../components/Reveal';
-import { company } from '../content/siteContent';
 import { galleryCategories, galleryItems, type GalleryCategory, type GalleryItem } from '../data/gallery';
 
 export function GalleryPage() {
@@ -145,18 +144,6 @@ export function GalleryPage() {
                 </article>
               </Reveal>
             ))}
-          </div>
-
-          <div className="gallery-footer-cta">
-            <p>Vill du ha ett liknande resultat i ditt hem eller din fastighet?</p>
-            <div className="gallery-footer-cta__buttons">
-              <Link className="button button--accent" to="/kontakt#offert">
-                Begär kostnadsfri offert <ArrowUpRight />
-              </Link>
-              <a className="button button--ghost" href={`tel:${company.phoneHref}`}>
-                Ring {company.phoneDisplay}
-              </a>
-            </div>
           </div>
         </div>
       </section>
