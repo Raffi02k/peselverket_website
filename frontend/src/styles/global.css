@@ -2125,7 +2125,7 @@ h3 {
 
 /* Generic page heroes */
 .page-hero {
-  padding: 210px 0 120px;
+  padding: clamp(120px, 11vw, 150px) 0 clamp(24px, 3.5vw, 42px);
   background: var(--paper);
 }
 
@@ -2133,7 +2133,7 @@ h3 {
   display: grid;
   grid-template-columns: 1.18fr 0.82fr;
   align-items: end;
-  gap: clamp(60px, 10vw, 150px);
+  gap: clamp(40px, 8vw, 120px);
 }
 
 .page-hero h1 {
@@ -2142,7 +2142,7 @@ h3 {
 }
 
 .page-hero__lead {
-  margin-bottom: 28px;
+  margin-bottom: 16px;
   color: var(--text-muted);
   font-size: clamp(1.15rem, 1.7vw, 1.4rem);
 }
@@ -4529,7 +4529,11 @@ h3 {
   }
 
   .page-hero {
-    padding-top: 190px;
+    padding-top: 135px;
+  }
+
+  .page-hero__grid {
+    gap: 24px;
   }
 
   .page-hero__lead {
@@ -4894,7 +4898,7 @@ h3 {
 
   .page-hero,
   .contact-hero {
-    padding: 165px 0 80px;
+    padding: 110px 0 24px;
   }
 
   .page-hero h1 {
@@ -5098,8 +5102,8 @@ h3 {
 .gallery-trust-pills {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 22px;
+  gap: 10px;
+  margin-top: 14px;
 }
 
 .gallery-trust-pills span {
@@ -5121,11 +5125,35 @@ h3 {
   color: var(--accent);
 }
 
+/* ==========================================================================
+   GALLERY SECTION, GRID & LIGHTBOX
+   ========================================================================== */
+
+.gallery-section--page {
+  padding-top: clamp(16px, 2.5vw, 30px);
+  padding-bottom: clamp(40px, 6vw, 72px);
+}
+
+.gallery-section__header-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.gallery-section__header-action {
+  flex-shrink: 0;
+}
+
+.gallery-filter-row {
+  margin-bottom: 24px;
+}
+
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
-  margin-top: 36px;
 }
 
 .gallery-card {
@@ -5241,7 +5269,7 @@ h3 {
 }
 
 .gallery-card__content h3 {
-  font-size: 1.18rem;
+  font-size: 1.15rem;
   margin-bottom: 8px;
   color: var(--ink);
   line-height: 1.35;
@@ -5254,27 +5282,8 @@ h3 {
   margin: 0;
 }
 
-.gallery-footer-cta {
-  margin-top: 56px;
-  padding: 36px 32px;
-  border-radius: var(--radius-lg);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 20px;
-}
-
-.gallery-footer-cta p {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--ink);
-  margin: 0;
-}
-
-.gallery-footer-cta__buttons {
+.gallery-home-cta-row {
+  margin-top: 36px;
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
@@ -5337,7 +5346,7 @@ h3 {
   height: 52px;
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.12);
   color: #fff;
   display: flex;
   align-items: center;
@@ -5470,6 +5479,7 @@ h3 {
 @media (max-width: 980px) {
   .gallery-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
   }
   .gallery-modal__dialog {
     grid-template-columns: 1fr;
@@ -5477,26 +5487,55 @@ h3 {
     overflow-y: auto;
   }
   .gallery-modal__image-wrapper {
-    min-height: 280px;
-    max-height: 380px;
+    min-height: 260px;
+    max-height: 360px;
   }
   .gallery-modal__details {
     padding: 24px 20px;
   }
 }
 
+@media (max-width: 768px) {
+  .gallery-section__header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
+
 @media (max-width: 640px) {
   .gallery-grid {
     grid-template-columns: 1fr;
-    gap: 18px;
+    gap: 16px;
   }
   .gallery-modal {
     padding: 12px;
   }
+  .gallery-modal__dialog {
+    grid-template-columns: 1fr;
+    max-height: 86vh;
+    overflow-y: auto;
+  }
+  .gallery-modal__image-wrapper {
+    min-height: 240px;
+    max-height: 320px;
+  }
+  .gallery-modal__details {
+    padding: 20px 16px;
+  }
   .gallery-modal__nav {
-    display: none;
+    width: 44px;
+    height: 44px;
+    background: rgba(9, 20, 30, 0.78);
+  }
+  .gallery-modal__nav--prev {
+    left: 8px;
+  }
+  .gallery-modal__nav--next {
+    right: 8px;
   }
 }
+
 
 @media (prefers-reduced-motion: reduce) {
   html {

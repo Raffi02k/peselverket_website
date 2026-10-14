@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { CallToAction } from '../components/CallToAction';
 import { FAQ } from '../components/FAQ';
+import { GallerySection } from '../components/GallerySection';
 import { ArrowRight, ArrowUpRight, Check, Phone } from '../components/Icons';
 import { PageMeta } from '../components/PageMeta';
 import { ProjectCard } from '../components/ProjectCard';
@@ -300,6 +301,8 @@ export function HomePage() {
           </div>
         </div>
       </section>
+
+      <GallerySection isHomePage={true} showFilters={true} />
 
       <section className="about-section section-pad section--paper">
         <div className="container about-section__grid">
