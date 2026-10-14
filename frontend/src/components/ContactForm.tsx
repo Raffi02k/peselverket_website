@@ -296,10 +296,18 @@ export function ContactForm({
           {submitState === 'submitting' ? 'Skickar…' : 'Skicka offertförfrågan'}
           {submitState === 'submitting' ? <span className="spinner" aria-hidden="true" /> : <ArrowRight />}
         </button>
-        <p>
-          Du kan också ringa <a href={`tel:${company.phoneHref}`}><Phone />{company.phoneDisplay}</a> eller mejla{' '}
-          <a href={`mailto:${company.email}`}><Mail />{company.email}</a>.
-        </p>
+        <div className="contact-form__direct-info">
+          <span className="direct-info__label">Du kan även ringa</span>
+          <a href={`tel:${company.phoneHref}`} className="direct-info__link">
+            <Phone />
+            <span>{company.phoneDisplay}</span>
+          </a>
+          <span className="direct-info__label">eller mejla</span>
+          <a href={`mailto:${company.email}`} className="direct-info__link">
+            <Mail />
+            <span>{company.email}</span>
+          </a>
+        </div>
       </div>
 
       <p className="small-copy">

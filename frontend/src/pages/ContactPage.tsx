@@ -18,8 +18,7 @@ export function ContactPage() {
               <p className="eyebrow">Kontaktsida · Penselverket AB</p>
               <h1>Begär kostnadsfri offert.</h1>
               <p>
-                Beskriv ditt måleriprojekt nedan så återkommer vi inom 24 timmar. Du kan även ringa oss direkt på{' '}
-                <a href={`tel:${company.phoneHref}`}>{company.phoneDisplay}</a>.
+                Beskriv ditt måleriprojekt nedan så återkommer vi inom 24 timmar.
               </p>
             </div>
 
