@@ -43,9 +43,14 @@ function validate(values: FormValues): FormErrors {
 type ContactFormProps = {
   defaultLocation?: string;
   defaultProjectType?: string;
+  hideIntro?: boolean;
 };
 
-export function ContactForm({ defaultLocation = '', defaultProjectType = '' }: ContactFormProps = {}) {
+export function ContactForm({
+  defaultLocation = '',
+  defaultProjectType = '',
+  hideIntro = false
+}: ContactFormProps = {}) {
   const [values, setValues] = useState<FormValues>(() => ({
     ...initialValues,
     location: defaultLocation,
@@ -139,13 +144,15 @@ export function ContactForm({ defaultLocation = '', defaultProjectType = '' }: C
 
   return (
     <form className="contact-form" id="offert" noValidate onSubmit={onSubmit}>
-      <div className="contact-form__intro">
-        <div>
-          <p className="eyebrow">Kostnadsfri offertförfrågan</p>
-          <h2>Berätta om ditt projekt.</h2>
+      {!hideIntro && (
+        <div className="contact-form__intro">
+          <div>
+            <p className="eyebrow">Kostnadsfri offertförfrågan</p>
+            <h2>Berätta om ditt projekt.</h2>
+          </div>
+          <p>Fält markerade med * är obligatoriska. Ju tydligare underlag, desto enklare blir nästa steg.</p>
         </div>
-        <p>Fält markerade med * är obligatoriska. Ju tydligare underlag, desto enklare blir nästa steg.</p>
-      </div>
+      )}
 
       <div className="form-grid">
         <div className="field">
@@ -231,7 +238,7 @@ export function ContactForm({ defaultLocation = '', defaultProjectType = '' }: C
             id="preferredStart"
             name="preferredStart"
             type="text"
-            placeholder="Exempel: oktober 2026"
+            placeholder="Exempel: snarast, nästa månad..."
             value={values.preferredStart}
             onChange={(event) => update('preferredStart', event.target.value)}
           />
@@ -242,7 +249,7 @@ export function ContactForm({ defaultLocation = '', defaultProjectType = '' }: C
           <textarea
             id="message"
             name="message"
-            rows={7}
+            rows={3}
             placeholder="Vad ska målas, ungefär hur stora är ytorna och finns det något särskilt att ta hänsyn till?"
             value={values.message}
             onChange={(event) => update('message', event.target.value)}
