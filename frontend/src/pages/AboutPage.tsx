@@ -103,9 +103,6 @@ export function AboutPage() {
                     <strong>Oliver Bingmark</strong>
                     <span>Målare i arbete · Uddevalla</span>
                   </div>
-                  <span className="about-video-live-pill">
-                    <span className="about-pulse-dot" /> I ARBETE
-                  </span>
                 </div>
               </div>
             </Reveal>
