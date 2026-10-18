@@ -70,8 +70,8 @@ export function AboutPage() {
           <Reveal className="about-fullscreen-media" delay={100}>
             <div className="about-photo-card">
               <img
-                src="/assets/project-facade.webp"
-                alt="Penselverket måleriarbete i Uddevalla"
+                src="/assets/utvandigt_malari.webp"
+                alt="Penselverket måleriarbete på trävilla i Uddevalla"
                 loading="eager"
                 width="800"
                 height="900"

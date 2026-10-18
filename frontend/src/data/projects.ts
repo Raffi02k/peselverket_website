@@ -3,40 +3,44 @@ import type { Project } from '../types';
 export const projects: Project[] = [
   {
     slug: 'invandigt-maleri-uddevalla',
-    title: 'Pågående invändigt måleri',
+    title: 'Totalmålning av lägenhet & bostad',
     location: 'Uddevalla',
     category: 'Invändigt',
-    status: 'Pågående',
+    status: 'Färdigt',
     year: '2026',
     summary:
-      'Ett pågående invändigt projekt där ytor skyddas, förbereds och målas med fokus på ett jämnt och hållbart slutresultat.',
+      'Komplett invändig målning av väggar, tak och snickerier med noggrant underarbete och slät, modern finish.',
     description: [
-      'Bilderna visar arbetet under processen. Golv, köksytor och angränsande delar har täckts in innan arbetet med väggarna fortsätter.',
-      'Projektet publiceras som pågående eftersom något färdigt slutresultat ännu inte finns dokumenterat i det uppladdade bildmaterialet.'
+      'Noggrant grund- och underarbete med bredspackling, skarvremsor och maskering av samtliga golvytor.',
+      'Två strykningar med slitstark vägg- och takfärg i neutral kulör som ger ett harmoniskt och ljust intryck.'
     ],
     scope: [
-      'Skyddstäckning av golv och fasta ytor',
-      'Förberedelse av väggar',
-      'Invändig målning',
-      'Löpande kontroll av ytor och detaljer'
+      'Skyddstäckning av golv och inredning',
+      'Bredspackling och slipning med dammutsug',
+      'Målning av väggar, tak och dörrfoder',
+      'Slutbesiktning och renstädade ytor'
     ],
-    cover: '/assets/hero-project.webp',
+    cover: '/assets/laganhet.webp',
     images: [
       {
-        src: '/assets/project-room.webp',
-        alt: 'Täckt golv och förberedd vägg under pågående invändigt måleriarbete i Uddevalla'
+        src: '/assets/laganhet.webp',
+        alt: 'Nymålad lägenhet med släta ytor och matt finish i Uddevalla'
       },
       {
-        src: '/assets/project-kitchen.webp',
-        alt: 'Skyddstäckt köksdel under pågående invändigt måleriprojekt i Uddevalla'
+        src: '/assets/laganhet2.webp',
+        alt: 'Ljus och modern invändig finish i vardagsrum'
       },
       {
-        src: '/assets/project-detail.webp',
-        alt: 'Väggyta och dörröppning under förberedelse inför fortsatt måleriarbete'
+        src: '/assets/invandigt_maleri.webp',
+        alt: 'Invändigt måleriarbete med jämna väggytor'
       },
       {
-        src: '/assets/project-hall.webp',
-        alt: 'Nymålad väggyta och skyddstäckt golv i en hall under pågående arbete'
+        src: '/assets/invandigt_malari2.webp',
+        alt: 'Noggrann spackling och underarbete innan målning'
+      },
+      {
+        src: '/assets/invandigt_malari4.webp',
+        alt: 'Precisionsmålning av snickerier och dörrfoder'
       }
     ]
   },
@@ -50,55 +54,66 @@ export const projects: Project[] = [
     summary:
       'Noggrann fasadmålning och grundarbete på trähus i Uddevalla med fokus på väderbeständighet och välgjort detaljarbete.',
     description: [
-      'Noggrann rengöring, tvätt och skrapning av tidigare färgskikt.',
-      'Grundmålning samt två strykningar med högkvalitativ fasadfärg för långvarigt skydd.'
+      'Noggrann rengöring, tvätt och skrapning av tidigare färgskikt och lös färg.',
+      'Grundmålning samt två strykningar med högkvalitativ fasadfärg för långvarigt skydd mot bohuslänskt kustklimat.'
     ],
     scope: [
       'Ställningsbyggande och säkerhetsåtgärder',
       'Fasadtvätt och skrapning',
       'Grundmålning & slutstrykning',
-      'Målning av fönsterfoder och knutar'
+      'Målning av fönsterfoder, vindskivor och knutar'
     ],
-    cover: '/assets/service-utvandigt.webp',
+    cover: '/assets/utvandigt_malari.webp',
     images: [
       {
-        src: '/assets/service-utvandigt.webp',
-        alt: 'Målning av trähusfasad i Uddevalla'
+        src: '/assets/utvandigt_malari.webp',
+        alt: 'Fasadmålning av trävilla i Uddevalla'
       },
       {
-        src: '/assets/project-facade.webp',
-        alt: 'Detalj av nymålad fasad och fönsterfoder'
+        src: '/assets/utvandigt_malari1.webp',
+        alt: 'Exteriör ommålning med täckande fasadfärg'
+      },
+      {
+        src: '/assets/utvandigt_malari2.webp',
+        alt: 'Målning av träpanel och knutar'
+      },
+      {
+        src: '/assets/utvandigt_malari4.webp',
+        alt: 'Detaljarbete fönster och takfot'
+      },
+      {
+        src: '/assets/utvandigt_malari8.webp',
+        alt: 'Färdigställd villa med fräsch kulör'
       }
     ]
   },
   {
     slug: 'trapphus-brf-uddevalla',
-    title: 'Målning av trapphus & entréer BRF',
+    title: 'Företagsmåleri & kommersiella lokaler',
     location: 'Uddevalla',
     category: 'Företag & BRF',
     status: 'Färdigt',
     year: '2026',
     summary:
-      'Uppfräschning och målning av trapphus, entréer och gemensamma ytor för bostadsrättsförening i Uddevalla.',
+      'Måleri av företagslokaler, verksamhetsytor och fastigheter med fokus på slitstyrka och minimal störning.',
     description: [
-      'Renovering och målning av väggar, lister och dörrpartier i flerbostadshus.',
-      'Slitstarka och lättstädade färgval anpassade för hög belastning i gemensamma utrymmen.'
+      'Målning av lokaler, kontor och gemensamma utrymmen anpassat för hög belastning.',
+      'Flexibel planering så att verksamheten kan rulla på utan onödiga avbrott.'
     ],
     scope: [
       'Underarbete och spackling av slitna väggar',
-      'Målning av väggar och snickerier',
-      'Slitstark finish för trapphus och entré',
-      'Tydlig planering för minsta möjliga störning för de boende'
+      'Målning av väggar och snickerier med slitstark färg',
+      'Tydlig tidsplan och noggrann ordning under arbetet'
     ],
-    cover: '/assets/service-foretag-brf.webp',
+    cover: '/assets/foretag.webp',
     images: [
       {
-        src: '/assets/service-foretag-brf.webp',
-        alt: 'Entré och fastighet nymålad för BRF i Uddevalla'
+        src: '/assets/foretag.webp',
+        alt: 'Måleri av företagslokaler och verksamhetsytor i Uddevalla'
       },
       {
-        src: '/assets/project-trapphus.webp',
-        alt: 'Nymålat trapphus med varma toner och belysning'
+        src: '/assets/reklam.webp',
+        alt: 'Penselverket arbetsfordon och utrustning på plats vid projekt'
       }
     ]
   }

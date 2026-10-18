@@ -287,7 +287,7 @@ export function HomePage() {
           <div className="project-note-grid">
             <Reveal>
               <div className="project-note project-note--image">
-                <img src="/assets/project-detail.webp" alt="Förberedd väggyta under pågående arbete" loading="lazy" />
+                <img src="/assets/invandigt_malari2.webp" alt="Noggrant underarbete och spackling under pågående arbete" loading="lazy" />
                 <div><span>Arbetsprocess</span><strong>Skydd, förberedelse och kontroll</strong></div>
               </div>
             </Reveal>

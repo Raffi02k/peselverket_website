@@ -28,7 +28,7 @@ export const services: Service[] = [
       'Spackling, slipning och grundmålning',
       'Tapetsering efter överenskommelse'
     ],
-    image: '/assets/project-kitchen.webp',
+    image: '/assets/laganhet.webp',
     visual: 'image'
   },
   {
@@ -43,7 +43,7 @@ export const services: Service[] = [
       'Tvätt, skrapning och grundarbete',
       'Kulör- och materialdialog'
     ],
-    image: '/assets/service-utvandigt.webp',
+    image: '/assets/utvandigt_malari.webp',
     visual: 'image'
   },
   {
@@ -58,7 +58,7 @@ export const services: Service[] = [
       'Löpande underhåll',
       'Tydlig planering kring verksamheten'
     ],
-    image: '/assets/service-foretag-brf.webp',
+    image: '/assets/foretag.webp',
     visual: 'image'
   }
 ];

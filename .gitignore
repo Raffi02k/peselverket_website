@@ -11,3 +11,5 @@ backend/.venv/
 **/.DS_Store
 *.log
 OPEN_WEBSITE.html
+*.HEIC
+*.heic
