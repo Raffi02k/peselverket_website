@@ -12,87 +12,120 @@ export function AboutPage() {
         description="Penselverket drivs av målaren Oliver Bingmark i Uddevalla. Invändigt och utvändigt måleri med noggrant underarbete, fasta priser och ROT-avdrag."
       />
 
-      <section className="about-fullscreen-section">
-        <div className="container about-fullscreen-grid">
-          {/* Left Column: Direct, human information */}
-          <Reveal className="about-fullscreen-content">
-            <p className="eyebrow">Om Penselverket AB</p>
-            <h1>Målare i Uddevalla med fokus på hantverket.</h1>
+      <section className="about-editorial-page">
+        {/* Decorative Ghost Watermark Typography (as in freeART reference) */}
+        <div className="about-editorial-watermark" aria-hidden="true">
+          <span>OM OSS · PENSELVERKET</span>
+        </div>
 
-            <p className="about-direct-lead">
-              Penselverket drivs av målaren Oliver Bingmark. Vi hjälper privatpersoner, fastighetsägare och bostadsrättsföreningar i Uddevalla och Bohuslän med invändigt och utvändigt måleri.
+        {/* Main Floating Rounded Editorial Container */}
+        <div className="about-editorial-container">
+          {/* Header Title Section */}
+          <header className="about-editorial-header">
+            <span className="about-editorial-tag">HANTVERK MED PASSION</span>
+            <h1 className="about-editorial-title">
+              OM <span className="about-editorial-title-accent">OSS</span>
+            </h1>
+            <p className="about-editorial-lead">
+              Penselverket drivs av målaren Oliver Bingmark. Vi hjälper privatpersoner, fastighetsägare och bostadsrättsföreningar i Uddevalla och Bohuslän med invändigt och utvändigt måleri där kvalitet, noggrant underarbete och personlig service alltid kommer först.
             </p>
+          </header>
 
-            <p className="about-direct-text">
-              Vi lägger stor vikt vid noggrant underarbete, tydliga fasta priser och att alltid lämna ditt hem rent och snyggt.
-            </p>
+          {/* Staggered 2x2 Bento Editorial Grid */}
+          <div className="about-editorial-grid">
+            {/* Top-Left: Founder & Craft Card */}
+            <Reveal className="about-editorial-card about-editorial-card--story">
+              <div className="about-story-visual">
+                <img
+                  src="/assets/penselverket_logo_runt.webp"
+                  alt="Penselverket hantverksstämpel"
+                  className="about-story-badge"
+                  width="110"
+                  height="110"
+                  loading="eager"
+                />
+              </div>
+              <div className="about-story-text">
+                <span className="about-card-eyebrow">GRUNDARE & MÅLARE</span>
+                <h3>Oliver Bingmark</h3>
+                <p>
+                  Vi tror på ett genuint målerihantverk där underarbetet får ta den tid som krävs för att slutresultatet ska hålla och se felfritt ut i många år framåt.
+                </p>
+                <div className="about-story-meta">
+                  <span>Uddevalla & Bohuslän</span>
+                  <span>·</span>
+                  <span>Org.nr {company.organisationNumber}</span>
+                </div>
+              </div>
+            </Reveal>
 
-            {/* Quick Facts List */}
-            <div className="about-direct-facts">
-              <div>
-                <small>Grundare</small>
-                <strong>{company.contactName}</strong>
+            {/* Top-Right: Stat 1 */}
+            <Reveal className="about-editorial-card about-editorial-card--stat" delay={80}>
+              <div className="about-stat-number">30%</div>
+              <h3 className="about-stat-title">ROT-AVDRAG DIREKT PÅ FAKTURAN</h3>
+              <p className="about-stat-desc">
+                Som privatperson betalar du endast 70% av arbetskostnaden. Vi hanterar hela kontakten och avdraget med Skatteverket utan administrativt krångel för dig.
+              </p>
+            </Reveal>
+
+            {/* Bottom-Left: Stat 2 */}
+            <Reveal className="about-editorial-card about-editorial-card--stat" delay={120}>
+              <div className="about-stat-number">100%</div>
+              <h3 className="about-stat-title">NÖJD KUND & FASTA PRISER</h3>
+              <p className="about-stat-desc">
+                Tydliga, specificerade offerter innan vi sätter igång. Vi håller tidsplaner, lämnar hemmet dammfritt och städat, och har F-skatt godkänd.
+              </p>
+            </Reveal>
+
+            {/* Bottom-Right: Authentic Video of Oliver in Action */}
+            <Reveal className="about-editorial-card about-editorial-card--video" delay={160}>
+              <div className="about-video-frame">
+                <video
+                  src="/media/om_oss_video.mp4"
+                  poster="/media/om_oss_poster.webp"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  aria-label="Oliver Bingmark målar i Uddevalla"
+                >
+                  <img
+                    src="/media/om_oss_poster.webp"
+                    alt="Oliver Bingmark under arbete"
+                    loading="eager"
+                    width="720"
+                    height="1280"
+                  />
+                </video>
+                <div className="about-video-caption">
+                  <div>
+                    <strong>Oliver Bingmark</strong>
+                    <span>Målare i arbete · Uddevalla</span>
+                  </div>
+                  <span className="about-video-live-pill">
+                    <span className="about-pulse-dot" /> I ARBETE
+                  </span>
+                </div>
               </div>
-              <div>
-                <small>Telefon</small>
-                <a href={`tel:${company.phoneHref}`}><strong>{company.phoneDisplay}</strong></a>
-              </div>
-              <div>
-                <small>Säte & Område</small>
-                <strong>Uddevalla & Bohuslän</strong>
-              </div>
-              <div>
-                <small>Org.nr</small>
-                <strong>{company.organisationNumber}</strong>
-              </div>
-              <div>
-                <small>Skatt & ROT</small>
-                <strong>Godkänd för F-skatt · 30% ROT</strong>
-              </div>
-              <div>
-                <small>E-post</small>
-                <a href={`mailto:${company.email}`}><strong>{company.email}</strong></a>
-              </div>
+            </Reveal>
+          </div>
+
+          {/* Bottom Action Footer Bar */}
+          <footer className="about-editorial-footer">
+            <div className="about-footer-info">
+              <span className="about-footer-tag">REDO ATT FÖRVANDLA DITT HEM?</span>
+              <p>Begär en kostnadsfri offert eller slå oss en signal för rådgivning.</p>
             </div>
-
-            {/* Actions */}
-            <div className="about-direct-actions">
+            <div className="about-footer-actions">
               <Link className="button button--accent" to="/kontakt">
                 Begär kostnadsfri offert <ArrowUpRight />
               </Link>
-              <a className="button button--ghost" href={`tel:${company.phoneHref}`}>
+              <a className="button button--ghost-editorial" href={`tel:${company.phoneHref}`}>
                 <Phone /> Ring {company.phoneDisplay}
               </a>
             </div>
-          </Reveal>
-
-          {/* Right Column: Authentic Video */}
-          <Reveal className="about-fullscreen-media" delay={100}>
-            <div className="about-photo-card">
-              <video
-                src="/media/om_oss_video.mp4"
-                poster="/media/om_oss_poster.webp"
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                aria-label="Oliver Bingmark under måleriarbete i Uddevalla"
-              >
-                <img
-                  src="/media/om_oss_poster.webp"
-                  alt="Oliver Bingmark under måleriarbete i Uddevalla"
-                  loading="eager"
-                  width="720"
-                  height="1280"
-                />
-              </video>
-              <div className="about-photo-card__caption">
-                <strong>{company.contactName}</strong>
-                <span>Målare & Grundare · Uddevalla</span>
-              </div>
-            </div>
-          </Reveal>
+          </footer>
         </div>
       </section>
     </>
