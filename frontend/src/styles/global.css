@@ -2562,56 +2562,60 @@ h3 {
    ========================================================================== */
 
 .about-fullscreen-section {
-  min-height: calc(100vh - 80px);
-  padding: clamp(96px, 9vw, 115px) 0 32px;
+  min-height: calc(100vh - 72px);
+  padding: clamp(74px, 7.5vh, 88px) 0 20px;
   background: var(--paper);
   display: flex;
   align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 .about-fullscreen-grid {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
   align-items: center;
-  gap: clamp(40px, 6vw, 90px);
+  gap: clamp(32px, 4.5vw, 64px);
+  width: 100%;
 }
 
 .about-fullscreen-content h1 {
-  font-size: clamp(2.3rem, 4.4vw, 3.8rem);
+  font-size: clamp(1.85rem, 2.7vw, 2.65rem);
   line-height: 1.15;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
   color: var(--ink);
 }
 
 .about-direct-lead {
-  font-size: clamp(1.08rem, 1.4vw, 1.25rem);
-  line-height: 1.6;
+  font-size: clamp(0.98rem, 1.2vw, 1.12rem);
+  line-height: 1.55;
   color: var(--ink);
   font-weight: 500;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .about-direct-text {
-  font-size: 0.98rem;
-  line-height: 1.65;
+  font-size: 0.9rem;
+  line-height: 1.55;
   color: var(--text-muted);
-  margin-bottom: 24px;
+  margin-bottom: 18px;
 }
 
 .about-direct-facts {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px 18px;
-  padding: 20px 22px;
+  gap: 10px 14px;
+  padding: 14px 18px;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  margin-bottom: 28px;
+  border-radius: var(--radius-md);
+  margin-bottom: 20px;
+  box-shadow: 0 10px 24px rgba(12, 21, 24, 0.04);
 }
 
 .about-direct-facts small {
   display: block;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -2621,8 +2625,9 @@ h3 {
 
 .about-direct-facts strong {
   display: block;
-  font-size: 0.92rem;
+  font-size: 0.86rem;
   color: var(--ink);
+  line-height: 1.35;
 }
 
 .about-direct-facts a {
@@ -2641,13 +2646,30 @@ h3 {
   align-items: center;
 }
 
+.about-fullscreen-media {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 .about-photo-card {
   position: relative;
-  border-radius: var(--radius-xl);
+  width: 100%;
+  max-width: 380px;
+  max-height: min(62vh, 500px);
+  aspect-ratio: 3.7 / 4.8;
+  margin: 0 auto;
+  border-radius: 32px;
   overflow: hidden;
-  box-shadow: 0 24px 60px rgba(12, 21, 24, 0.12);
-  aspect-ratio: 4 / 4.4;
   background: var(--ink);
+  border: 4px solid #ffffff;
+  box-shadow: 
+    0 24px 50px -10px rgba(12, 21, 24, 0.16),
+    0 4px 16px -4px rgba(12, 21, 24, 0.08),
+    0 0 0 1px rgba(12, 21, 24, 0.08);
+  transform: translateZ(0);
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 
 .about-photo-card img,
@@ -2660,28 +2682,32 @@ h3 {
 
 .about-photo-card__caption {
   position: absolute;
-  bottom: 16px;
-  left: 16px;
-  right: 16px;
-  padding: 14px 18px;
-  border-radius: var(--radius-md);
-  background: rgba(9, 20, 30, 0.88);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  bottom: 14px;
+  left: 14px;
+  right: 14px;
+  padding: 10px 14px;
+  border-radius: 18px;
+  background: rgba(9, 20, 30, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  z-index: 2;
 }
 
 .about-photo-card__caption strong {
   display: block;
-  font-size: 1rem;
+  font-size: 0.92rem;
   color: #fff;
+  line-height: 1.3;
 }
 
 .about-photo-card__caption span {
   display: block;
-  font-size: 0.8rem;
+  font-size: 0.76rem;
   color: rgba(255, 255, 255, 0.75);
+  line-height: 1.3;
 }
 
 /* ==========================================================================
@@ -4731,17 +4757,35 @@ h3 {
     min-height: 560px;
   }
 
+  .about-fullscreen-section {
+    min-height: auto;
+    padding: 76px 0 32px;
+  }
+
   .about-fullscreen-grid {
     grid-template-columns: 1fr;
-    gap: 36px;
+    gap: 28px;
   }
 
   .about-direct-facts {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 14px 16px;
+    gap: 10px 12px;
+    margin-bottom: 20px;
+  }
+
+  .about-fullscreen-media {
+    display: flex;
+    justify-content: center;
+    width: 100%;
   }
 
   .about-photo-card {
-    aspect-ratio: 16 / 10;
+    max-width: 320px;
+    aspect-ratio: 4 / 5;
+    border-radius: 28px;
+    border: 3.5px solid #ffffff;
+    margin: 6px auto 0;
   }
 }
 
