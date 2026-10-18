@@ -66,16 +66,27 @@ export function AboutPage() {
             </div>
           </Reveal>
 
-          {/* Right Column: Authentic Image */}
+          {/* Right Column: Authentic Video */}
           <Reveal className="about-fullscreen-media" delay={100}>
             <div className="about-photo-card">
-              <img
-                src="/assets/utvandigt_malari.webp"
-                alt="Penselverket måleriarbete på trävilla i Uddevalla"
-                loading="eager"
-                width="800"
-                height="900"
-              />
+              <video
+                src="/media/om_oss_video.mp4"
+                poster="/media/om_oss_poster.webp"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-label="Oliver Bingmark under måleriarbete i Uddevalla"
+              >
+                <img
+                  src="/media/om_oss_poster.webp"
+                  alt="Oliver Bingmark under måleriarbete i Uddevalla"
+                  loading="eager"
+                  width="720"
+                  height="1280"
+                />
+              </video>
               <div className="about-photo-card__caption">
                 <strong>{company.contactName}</strong>
                 <span>Målare & Grundare · Uddevalla</span>

@@ -13,3 +13,5 @@ backend/.venv/
 OPEN_WEBSITE.html
 *.HEIC
 *.heic
+*.MOV
+*.mov
